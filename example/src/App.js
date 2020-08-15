@@ -1,10 +1,14 @@
 import React from 'react'
 
 import { ExampleComponent } from 'form-designer'
-import 'form-designer/dist/index.css'
 
 const App = () => {
-  return <ExampleComponent text="Create React Library Example 😄" />
+  return (
+    <ExampleComponent
+      value={null}
+      onChange={(newForm) => console.log(newForm)}
+    />
+  )
 }
 
 export default App

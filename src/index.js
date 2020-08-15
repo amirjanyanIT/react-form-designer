@@ -1,6 +1,14 @@
-import React from 'react'
-import styles from './styles.module.css'
+import React, { useEffect } from 'react'
+import styled from 'styled-components'
 
-export const ExampleComponent = ({ text }) => {
-  return <div className={styles.test}>Example Component: {text}</div>
+const MainContainer = styled.div`
+  min-width: 920px;
+`
+
+export const ExampleComponent = ({ value = null, onChange = () => {} }) => {
+  useEffect(() => {
+    console.log(value)
+  }, [value])
+
+  return <MainContainer>Hello World</MainContainer>
 }
