@@ -38,7 +38,7 @@ const SortableList = SortableContainer(({ options, setOptions }) => {
           option={option}
           optionIndex={index}
           index={index}
-          key={index}
+          key={`sortable-dropdown-item-${index}`}
           setOptions={setOptions}
           options={options}
         />
