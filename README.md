@@ -16,7 +16,6 @@ npm install --save form-designer
 import React, { Component } from 'react'
 
 import FormDesigner from 'form-designer'
-import 'form-designer/dist/index.css'
 
 const App = () => {
   const [fields, setFields] = useState([])
