@@ -1,4 +1,4 @@
-import React, { useState, Fragment, useEffect } from 'react'
+import React, { useState, Fragment } from 'react'
 import OutsideClickHandler from 'react-outside-click-handler'
 import Input from '../../StyledElements/Input'
 import Block from '../../StyledElements/Block'
@@ -47,12 +47,12 @@ const SortableList = SortableContainer(({ options, setOptions }) => {
   )
 })
 
-const MultiSelect = ({ onChange = () => {}, onRequestToDelete = () => {} }) => {
-  const [question, setQuestion] = useState('')
-  const [options, setOptions] = useState([''])
+const MultiSelect = ({
+  field,
+  onChange = () => {},
+  onRequestToDelete = () => {}
+}) => {
   const [preview, setPreview] = useState(true)
-
-  useEffect(() => onChange({ question, options }), [question, options])
 
   return (
     <OutsideClickHandler onOutsideClick={() => setPreview(true)}>
@@ -62,7 +62,7 @@ const MultiSelect = ({ onChange = () => {}, onRequestToDelete = () => {} }) => {
       >
         {preview ? (
           <Fragment>
-            <Title>{question || constants.DEFAULT_LABEL}</Title>
+            <Title>{field.description || constants.DEFAULT_LABEL}</Title>
             <Input value='' disabled />
           </Fragment>
         ) : (
@@ -75,22 +75,36 @@ const MultiSelect = ({ onChange = () => {}, onRequestToDelete = () => {} }) => {
                 <BsTrash />
               </IconButton>
             </div>
-            <Title>{question || constants.DEFAULT_LABEL}</Title>
+            <Title>{field.description || constants.DEFAULT_LABEL}</Title>
             <Input
               placeholder={constants.DEFAULT_LABEL}
-              value={question}
+              value={field.description}
               type='text'
-              onChange={({ target: { value } }) => setQuestion(value)}
+              onChange={({ target: { value } }) =>
+                onChange({ ...field, description: value })
+              }
             />
             <SortableList
-              options={options}
-              setOptions={setOptions}
+              options={field.options}
+              setOptions={(options) => {
+                onChange({
+                  ...field,
+                  options: options
+                })
+              }}
               distance={1}
               onSortEnd={({ oldIndex, newIndex }) => {
-                setOptions(arrayMove(options, oldIndex, newIndex))
+                onChange({
+                  ...field,
+                  options: arrayMove(field.options, oldIndex, newIndex)
+                })
               }}
             />
-            <LinkButton onClick={() => setOptions([...options, ''])}>
+            <LinkButton
+              onClick={() =>
+                onChange({ ...field, options: [...field.options, ''] })
+              }
+            >
               <BsPlus />
               Add Option
             </LinkButton>

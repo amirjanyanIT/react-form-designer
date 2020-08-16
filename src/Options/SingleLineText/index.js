@@ -1,4 +1,4 @@
-import React, { useState, Fragment, useEffect } from 'react'
+import React, { useState, Fragment } from 'react'
 import OutsideClickHandler from 'react-outside-click-handler'
 import Input from '../../StyledElements/Input'
 import Block from '../../StyledElements/Block'
@@ -8,13 +8,11 @@ import constants from '../../constants.json'
 import { BsTrash, BsType } from 'react-icons/bs'
 
 const SingleLineText = ({
+  field,
   onChange = () => {},
   onRequestToDelete = () => {}
 }) => {
-  const [question, setQuestion] = useState('')
   const [preview, setPreview] = useState(true)
-
-  useEffect(() => onChange(question), [question])
 
   return (
     <OutsideClickHandler onOutsideClick={() => setPreview(true)}>
@@ -24,7 +22,7 @@ const SingleLineText = ({
       >
         {preview ? (
           <Fragment>
-            <Title>{question || constants.DEFAULT_LABEL}</Title>
+            <Title>{field.description || constants.DEFAULT_LABEL}</Title>
             <Input value='' disabled />
           </Fragment>
         ) : (
@@ -37,11 +35,16 @@ const SingleLineText = ({
                 <BsTrash />
               </IconButton>
             </div>
-            <Title>{question || constants.DEFAULT_LABEL}</Title>
+            <Title>{field.description || constants.DEFAULT_LABEL}</Title>
             <Input
               placeholder={constants.DEFAULT_LABEL}
-              value={question}
-              onChange={({ target: { value } }) => setQuestion(value)}
+              value={field.description}
+              onChange={({ target: { value } }) =>
+                onChange({
+                  ...field,
+                  description: value
+                })
+              }
             />
           </Fragment>
         )}

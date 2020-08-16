@@ -1,4 +1,4 @@
-import React, { useState, Fragment, useEffect } from 'react'
+import React, { useState, Fragment } from 'react'
 import OutsideClickHandler from 'react-outside-click-handler'
 import Input from '../../StyledElements/Input'
 import Block from '../../StyledElements/Block'
@@ -9,13 +9,11 @@ import constants from '../../constants.json'
 import { BsJustifyLeft, BsTrash } from 'react-icons/bs'
 
 const ParagraphText = ({
+  field,
   onChange = () => {},
   onRequestToDelete = () => {}
 }) => {
-  const [question, setQuestion] = useState('')
   const [preview, setPreview] = useState(true)
-
-  useEffect(() => onChange(question), [question])
 
   return (
     <OutsideClickHandler onOutsideClick={() => setPreview(true)}>
@@ -25,7 +23,7 @@ const ParagraphText = ({
       >
         {preview ? (
           <Fragment>
-            <Title>{question || constants.DEFAULT_LABEL}</Title>
+            <Title>{field.description || constants.DEFAULT_LABEL}</Title>
             <TextArea value='' disabled />
           </Fragment>
         ) : (
@@ -38,12 +36,14 @@ const ParagraphText = ({
                 <BsTrash />
               </IconButton>
             </div>
-            <Title>{question || constants.DEFAULT_LABEL}</Title>
+            <Title>{field.description || constants.DEFAULT_LABEL}</Title>
             <Input
               placeholder={constants.DEFAULT_LABEL}
-              value={question}
+              value={field.description}
               type='text'
-              onChange={({ target: { value } }) => setQuestion(value)}
+              onChange={({ target: { value } }) =>
+                onChange({ ...field, description: value })
+              }
             />
           </Fragment>
         )}

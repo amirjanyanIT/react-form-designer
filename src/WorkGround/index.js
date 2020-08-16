@@ -16,7 +16,7 @@ const Container = styled.div`
   flex: 8;
   align-items: center;
   flex-direction: column;
-  background-color: #fbfbfb;
+  background-color: inherit;
   padding-top: 15px;
 `
 
@@ -26,19 +26,124 @@ export default () => {
   const renderFieldUIContainer = (field, index) => {
     switch (field.type) {
       case 'SINGLE_LINE_TEXT':
-        return <SingleLineText />
+        return (
+          <SingleLineText
+            key={index}
+            field={field}
+            onChange={(updatedField) => {
+              onChange(
+                fields.map((field, cIndex) =>
+                  index === cIndex ? updatedField : field
+                )
+              )
+            }}
+            onRequestToDelete={() =>
+              onChange(fields.filter((_field, cindex) => index !== cindex))
+            }
+          />
+        )
       case 'PARAGRAPH_TEXT':
-        return <ParagraphText />
+        return (
+          <ParagraphText
+            key={index}
+            field={field}
+            onChange={(updatedField) => {
+              onChange(
+                fields.map((field, cIndex) =>
+                  index === cIndex ? updatedField : field
+                )
+              )
+            }}
+            onRequestToDelete={() =>
+              onChange(fields.filter((_field, cindex) => index !== cindex))
+            }
+          />
+        )
       case 'NUMBER':
-        return <NumberInput />
+        return (
+          <NumberInput
+            key={index}
+            field={field}
+            onChange={(updatedField) => {
+              onChange(
+                fields.map((field, cIndex) =>
+                  index === cIndex ? updatedField : field
+                )
+              )
+            }}
+            onRequestToDelete={() =>
+              onChange(fields.filter((_field, cindex) => index !== cindex))
+            }
+          />
+        )
       case 'DROPDOWN':
-        return <DropDown />
+        return (
+          <DropDown
+            key={index}
+            field={field}
+            onChange={(updatedField) => {
+              onChange(
+                fields.map((field, cIndex) =>
+                  index === cIndex ? updatedField : field
+                )
+              )
+            }}
+            onRequestToDelete={() =>
+              onChange(fields.filter((_field, cindex) => index !== cindex))
+            }
+          />
+        )
       case 'MULTI_SELECT':
-        return <MultiSelect />
+        return (
+          <MultiSelect
+            key={index}
+            field={field}
+            onChange={(updatedField) => {
+              onChange(
+                fields.map((field, cIndex) =>
+                  index === cIndex ? updatedField : field
+                )
+              )
+            }}
+            onRequestToDelete={() =>
+              onChange(fields.filter((_field, cindex) => index !== cindex))
+            }
+          />
+        )
       case 'DATE':
-        return <DateInput />
+        return (
+          <DateInput
+            key={index}
+            field={field}
+            onChange={(updatedField) => {
+              onChange(
+                fields.map((field, cIndex) =>
+                  index === cIndex ? updatedField : field
+                )
+              )
+            }}
+            onRequestToDelete={() =>
+              onChange(fields.filter((_field, cindex) => index !== cindex))
+            }
+          />
+        )
       case 'ATTACHMENT':
-        return <Attachment />
+        return (
+          <Attachment
+            key={index}
+            field={field}
+            onChange={(updatedField) => {
+              onChange(
+                fields.map((field, cIndex) =>
+                  index === cIndex ? updatedField : field
+                )
+              )
+            }}
+            onRequestToDelete={() =>
+              onChange(fields.filter((_field, cindex) => index !== cindex))
+            }
+          />
+        )
       default:
         return null
     }

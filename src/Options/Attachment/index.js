@@ -1,4 +1,4 @@
-import React, { useState, Fragment, useEffect } from 'react'
+import React, { useState, Fragment } from 'react'
 import OutsideClickHandler from 'react-outside-click-handler'
 import Input from '../../StyledElements/Input'
 import Block from '../../StyledElements/Block'
@@ -8,11 +8,12 @@ import IconButton from '../../StyledElements/IconButton'
 import constants from '../../constants.json'
 import { BsTrash, BsLink45Deg } from 'react-icons/bs'
 
-const Attachment = ({ onChange = () => {}, onRequestToDelete = () => {} }) => {
-  const [question, setQuestion] = useState('')
+const Attachment = ({
+  field,
+  onChange = () => {},
+  onRequestToDelete = () => {}
+}) => {
   const [preview, setPreview] = useState(true)
-
-  useEffect(() => onChange(question), [question])
 
   return (
     <OutsideClickHandler onOutsideClick={() => setPreview(true)}>
@@ -22,7 +23,7 @@ const Attachment = ({ onChange = () => {}, onRequestToDelete = () => {} }) => {
       >
         {preview ? (
           <Fragment>
-            <Title>{question || constants.DEFAULT_LABEL}</Title>
+            <Title>{field.description || constants.DEFAULT_LABEL}</Title>
             <DragDropArea />
           </Fragment>
         ) : (
@@ -35,11 +36,14 @@ const Attachment = ({ onChange = () => {}, onRequestToDelete = () => {} }) => {
                 <BsTrash />
               </IconButton>
             </div>
-            <Title>{question || constants.DEFAULT_LABEL}</Title>
+            <Title>{field.description || constants.DEFAULT_LABEL}</Title>
             <Input
               placeholder={constants.DEFAULT_LABEL}
-              value={question}
-              onChange={({ target: { value } }) => setQuestion(value)}
+              value={field.description}
+              type='text'
+              onChange={({ target: { value } }) =>
+                onChange({ ...field, description: value })
+              }
             />
           </Fragment>
         )}

@@ -1,4 +1,4 @@
-import React, { useState, Fragment, useEffect } from 'react'
+import React, { useState, Fragment } from 'react'
 import OutsideClickHandler from 'react-outside-click-handler'
 import Input from '../../StyledElements/Input'
 import Block from '../../StyledElements/Block'
@@ -7,11 +7,12 @@ import IconButton from '../../StyledElements/IconButton'
 import constants from '../../constants.json'
 import { BsTrash, BsCircle } from 'react-icons/bs'
 
-const NumberInput = ({ onChange = () => {}, onRequestToDelete = () => {} }) => {
-  const [question, setQuestion] = useState('')
+const NumberInput = ({
+  field,
+  onChange = () => {},
+  onRequestToDelete = () => {}
+}) => {
   const [preview, setPreview] = useState(true)
-
-  useEffect(() => onChange(question), [question])
 
   return (
     <OutsideClickHandler onOutsideClick={() => setPreview(true)}>
@@ -21,7 +22,7 @@ const NumberInput = ({ onChange = () => {}, onRequestToDelete = () => {} }) => {
       >
         {preview ? (
           <Fragment>
-            <Title>{question || constants.DEFAULT_LABEL}</Title>
+            <Title>{field.description || constants.DEFAULT_LABEL}</Title>
             <Input value='' disabled />
           </Fragment>
         ) : (
@@ -34,12 +35,14 @@ const NumberInput = ({ onChange = () => {}, onRequestToDelete = () => {} }) => {
                 <BsTrash />
               </IconButton>
             </div>
-            <Title>{question || constants.DEFAULT_LABEL}</Title>
+            <Title>{field.description || constants.DEFAULT_LABEL}</Title>
             <Input
               placeholder={constants.DEFAULT_LABEL}
-              value={question}
+              value={field.description}
               type='text'
-              onChange={({ target: { value } }) => setQuestion(value)}
+              onChange={({ target: { value } }) =>
+                onChange({ ...field, description: value })
+              }
             />
           </Fragment>
         )}
