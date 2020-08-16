@@ -160,7 +160,7 @@ const SortableList = SortableContainer(() => {
           field={field}
           fieldIndex={index}
           index={index}
-          key={index}
+          key={`sortable-item-${index}`}
         />
       ))}
     </div>
