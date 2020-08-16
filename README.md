@@ -15,13 +15,19 @@ npm install --save form-designer
 ```jsx
 import React, { Component } from 'react'
 
-import MyComponent from 'form-designer'
+import FormDesigner from 'form-designer'
 import 'form-designer/dist/index.css'
 
-class Example extends Component {
-  render() {
-    return <MyComponent />
-  }
+const App = () => {
+  const [fields, setFields] = useState([])
+  
+
+  return (
+    <FormDesigner 
+      fields={fields} 
+      onChange={(updatedFields) => setFields(updatedFields)}
+    >
+  )
 }
 ```
 
