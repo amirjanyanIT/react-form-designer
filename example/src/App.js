@@ -1,12 +1,16 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 
 import { ExampleComponent } from 'form-designer'
 
 const App = () => {
+  const [fields, setFields] = useState([]);
+  
+  useEffect(() => console.log(fields), [fields])
+
   return (
     <ExampleComponent
-      value={null}
-      onChange={(newForm) => console.log(newForm)}
+      fields={fields}
+      onChange={(newFields) => setFields(newFields)}
     />
   )
 }

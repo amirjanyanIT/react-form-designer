@@ -1,9 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import styled from 'styled-components'
 
+import Context from '../Context'
 import Button from '../StyledElements/Button'
 import Select, { components } from 'react-select'
 
+import BlankJSONInterface from '../BlankJSONInterface'
 import options from './options'
 
 const Container = styled.div`
@@ -39,6 +41,10 @@ const CustomSelectValue = (props) => (
 
 const ToolBox = () => {
   const [selectedOption, setSelectedOption] = useState(options[0])
+  const [fields, onChange] = useContext(Context)
+
+  const addFieldObserver = () =>
+    onChange([...fields, BlankJSONInterface[selectedOption.value]])
 
   return (
     <Container>
@@ -54,7 +60,7 @@ const ToolBox = () => {
           SingleValue: CustomSelectValue
         }}
       />
-      <Button>Add Field</Button>
+      <Button onClick={() => addFieldObserver()}>Add Field</Button>
     </Container>
   )
 }
