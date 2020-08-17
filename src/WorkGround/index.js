@@ -25,129 +25,125 @@ const Container = styled.div`
 const SortableItem = SortableElement(({ field, fieldIndex }) => {
   const [fields, onChange] = useContext(Context)
 
-  switch (field.type) {
-    case 'SINGLE_LINE_TEXT':
-      return (
-        <SingleLineText
-          key={fieldIndex}
-          field={field}
-          onChange={(updatedField) => {
-            onChange(
-              fields.map((field, cIndex) =>
-                fieldIndex === cIndex ? updatedField : field
+  const renderOptionContainer = () => {
+    switch (field.type) {
+      case 'SINGLE_LINE_TEXT':
+        return (
+          <SingleLineText
+            field={field}
+            onChange={(updatedField) => {
+              onChange(
+                fields.map((field, cIndex) =>
+                  fieldIndex === cIndex ? updatedField : field
+                )
               )
-            )
-          }}
-          onRequestToDelete={() =>
-            onChange(fields.filter((_field, cindex) => fieldIndex !== cindex))
-          }
-        />
-      )
-    case 'PARAGRAPH_TEXT':
-      return (
-        <ParagraphText
-          key={fieldIndex}
-          field={field}
-          onChange={(updatedField) => {
-            onChange(
-              fields.map((field, cIndex) =>
-                fieldIndex === cIndex ? updatedField : field
+            }}
+            onRequestToDelete={() =>
+              onChange(fields.filter((_field, cindex) => fieldIndex !== cindex))
+            }
+          />
+        )
+      case 'PARAGRAPH_TEXT':
+        return (
+          <ParagraphText
+            field={field}
+            onChange={(updatedField) => {
+              onChange(
+                fields.map((field, cIndex) =>
+                  fieldIndex === cIndex ? updatedField : field
+                )
               )
-            )
-          }}
-          onRequestToDelete={() =>
-            onChange(fields.filter((_field, cindex) => fieldIndex !== cindex))
-          }
-        />
-      )
-    case 'NUMBER':
-      return (
-        <NumberInput
-          key={fieldIndex}
-          field={field}
-          onChange={(updatedField) => {
-            onChange(
-              fields.map((field, cIndex) =>
-                fieldIndex === cIndex ? updatedField : field
+            }}
+            onRequestToDelete={() =>
+              onChange(fields.filter((_field, cindex) => fieldIndex !== cindex))
+            }
+          />
+        )
+      case 'NUMBER':
+        return (
+          <NumberInput
+            field={field}
+            onChange={(updatedField) => {
+              onChange(
+                fields.map((field, cIndex) =>
+                  fieldIndex === cIndex ? updatedField : field
+                )
               )
-            )
-          }}
-          onRequestToDelete={() =>
-            onChange(fields.filter((_field, cindex) => fieldIndex !== cindex))
-          }
-        />
-      )
-    case 'DROPDOWN':
-      return (
-        <DropDown
-          key={fieldIndex}
-          field={field}
-          onChange={(updatedField) => {
-            onChange(
-              fields.map((field, cIndex) =>
-                fieldIndex === cIndex ? updatedField : field
+            }}
+            onRequestToDelete={() =>
+              onChange(fields.filter((_field, cindex) => fieldIndex !== cindex))
+            }
+          />
+        )
+      case 'DROPDOWN':
+        return (
+          <DropDown
+            field={field}
+            onChange={(updatedField) => {
+              onChange(
+                fields.map((field, cIndex) =>
+                  fieldIndex === cIndex ? updatedField : field
+                )
               )
-            )
-          }}
-          onRequestToDelete={() =>
-            onChange(fields.filter((_field, cindex) => fieldIndex !== cindex))
-          }
-        />
-      )
-    case 'MULTI_SELECT':
-      return (
-        <MultiSelect
-          key={fieldIndex}
-          field={field}
-          onChange={(updatedField) => {
-            onChange(
-              fields.map((field, cIndex) =>
-                fieldIndex === cIndex ? updatedField : field
+            }}
+            onRequestToDelete={() =>
+              onChange(fields.filter((_field, cindex) => fieldIndex !== cindex))
+            }
+          />
+        )
+      case 'MULTI_SELECT':
+        return (
+          <MultiSelect
+            field={field}
+            onChange={(updatedField) => {
+              onChange(
+                fields.map((field, cIndex) =>
+                  fieldIndex === cIndex ? updatedField : field
+                )
               )
-            )
-          }}
-          onRequestToDelete={() =>
-            onChange(fields.filter((_field, cindex) => fieldIndex !== cindex))
-          }
-        />
-      )
-    case 'DATE':
-      return (
-        <DateInput
-          key={fieldIndex}
-          field={field}
-          onChange={(updatedField) => {
-            onChange(
-              fields.map((field, cIndex) =>
-                fieldIndex === cIndex ? updatedField : field
+            }}
+            onRequestToDelete={() =>
+              onChange(fields.filter((_field, cindex) => fieldIndex !== cindex))
+            }
+          />
+        )
+      case 'DATE':
+        return (
+          <DateInput
+            field={field}
+            onChange={(updatedField) => {
+              onChange(
+                fields.map((field, cIndex) =>
+                  fieldIndex === cIndex ? updatedField : field
+                )
               )
-            )
-          }}
-          onRequestToDelete={() =>
-            onChange(fields.filter((_field, cindex) => fieldIndex !== cindex))
-          }
-        />
-      )
-    case 'ATTACHMENT':
-      return (
-        <Attachment
-          key={fieldIndex}
-          field={field}
-          onChange={(updatedField) => {
-            onChange(
-              fields.map((field, cIndex) =>
-                fieldIndex === cIndex ? updatedField : field
+            }}
+            onRequestToDelete={() =>
+              onChange(fields.filter((_field, cindex) => fieldIndex !== cindex))
+            }
+          />
+        )
+      case 'ATTACHMENT':
+        return (
+          <Attachment
+            field={field}
+            onChange={(updatedField) => {
+              onChange(
+                fields.map((field, cIndex) =>
+                  fieldIndex === cIndex ? updatedField : field
+                )
               )
-            )
-          }}
-          onRequestToDelete={() =>
-            onChange(fields.filter((_field, cindex) => fieldIndex !== cindex))
-          }
-        />
-      )
-    default:
-      return null
+            }}
+            onRequestToDelete={() =>
+              onChange(fields.filter((_field, cindex) => fieldIndex !== cindex))
+            }
+          />
+        )
+      default:
+        return null
+    }
   }
+  return <div>{renderOptionContainer()}</div>
 })
 
 const SortableList = SortableContainer(() => {
@@ -157,10 +153,12 @@ const SortableList = SortableContainer(() => {
     <div>
       {fields.map((field, index) => (
         <SortableItem
-          field={field}
-          fieldIndex={index}
           index={index}
           key={`sortable-UC-${index}`}
+          field={field}
+          fieldIndex={index}
+          lockAxis='y'
+          lockToContainerEdges
         />
       ))}
     </div>
