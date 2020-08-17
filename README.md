@@ -2,7 +2,7 @@
 
 > UI for creating forms via dragging dropping required options
 
-[![NPM](https://img.shields.io/npm/v/form-designer.svg)](https://www.npmjs.com/package/form-designer) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![NPM](https://img.shields.io/npm/v/react-form-designer.svg)](https://www.npmjs.com/package/react-form-designer) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 ## Install
 
@@ -15,7 +15,7 @@ npm install --save react-form-designer
 ```jsx
 import React, { Component } from 'react'
 
-import FormDesigner from 'form-designer'
+import FormDesigner from 'react-form-designer'
 
 const App = () => {
   const [fields, setFields] = useState([])
