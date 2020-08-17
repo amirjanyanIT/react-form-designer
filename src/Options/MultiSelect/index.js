@@ -38,6 +38,8 @@ const SortableList = SortableContainer(({ options, setOptions }) => {
           option={option}
           optionIndex={index}
           index={index}
+          lockAxis='y'
+          lockToContainerEdges
           key={`sortable-multiselect-item-${index}`}
           setOptions={setOptions}
           options={options}

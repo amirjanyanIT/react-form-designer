@@ -160,7 +160,7 @@ const SortableList = SortableContainer(() => {
           field={field}
           fieldIndex={index}
           index={index}
-          key={`sortable-uicontainer-item-${index}`}
+          key={`sortable-UC-${index}`}
         />
       ))}
     </div>
@@ -174,6 +174,8 @@ export default () => {
     <Container>
       <SortableList
         distance={1}
+        lockAxis='y'
+        lockToContainerEdges
         onSortEnd={({ oldIndex, newIndex }) => {
           onChange(arrayMove(fields, oldIndex, newIndex))
         }}

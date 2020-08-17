@@ -13,11 +13,7 @@ const MainContainer = styled.div`
   font-family: 'Segoe UI';
 `
 
-export const ExampleComponent = ({
-  fields = null,
-  onChange = () => {},
-  styles = {}
-}) => {
+export default ({ fields = null, onChange = () => {}, styles = {} }) => {
   return (
     <FieldsContext.Provider value={[fields, onChange]}>
       <MainContainer styles={styles}>

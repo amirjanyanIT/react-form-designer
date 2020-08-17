@@ -1,6 +1,6 @@
 {
-  "short_name": "form-designer",
-  "name": "form-designer",
+  "short_name": "react-form-designer",
+  "name": "react-form-designer",
   "icons": [
     {
       "src": "favicon.ico",

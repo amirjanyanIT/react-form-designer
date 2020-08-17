@@ -37,6 +37,8 @@ const SortableList = SortableContainer(({ options, setOptions }) => {
         <SortableItem
           option={option}
           optionIndex={index}
+          lockAxis='y'
+          lockToContainerEdges
           index={index}
           key={`sortable-dropdown-item-${index}`}
           setOptions={setOptions}

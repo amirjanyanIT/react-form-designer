@@ -1,4 +1,4 @@
-# form-designer
+# react-form-designer
 
 > UI for creating forms via dragging dropping required options
 
