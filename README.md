@@ -7,7 +7,7 @@
 ## Install
 
 ```bash
-npm install --save form-designer
+npm install --save react-form-designer
 ```
 
 ## Usage
