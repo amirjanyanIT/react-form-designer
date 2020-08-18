@@ -1,11 +1,11 @@
-import React, { useState, useContext } from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
 
 import Context from '../Context'
+import OptionButton from '../StyledElements/OptionButton'
 import Button from '../StyledElements/Button'
-import Select, { components } from 'react-select'
 
-import { BsPlus, BsTrash } from 'react-icons/bs'
+import { BsTrash } from 'react-icons/bs'
 
 import BlankJSONInterface from '../BlankJSONInterface'
 import options from './options'
@@ -36,56 +36,39 @@ const Container = styled.div`
       padding: 5px 15px;
       margin-left: 10px;
       &.clear-button {
-        background-color: #404040;
+        background-color: white;
+        border: 1px solid #dcd4d4;
+        color: #716e6e;
+        &:hover {
+          color: #505050;
+          border-color: #505050;
+        }
       }
     }
   }
 `
-
-const { Option } = components
-const CustomSelectOption = (props) => (
-  <Option {...props}>
-    {props.data.icon}&nbsp;
-    {props.data.label}
-  </Option>
-)
-
-const CustomSelectValue = (props) => (
-  <div>
-    {props.data.icon}&nbsp;
-    {props.data.label}
-  </div>
-)
-
 const ToolBox = () => {
-  const [fields, onChange, expectedOptions] = useContext(Context)
+  const [
+    fields,
+    onChange,
+    expectedOptions,
+    renderInToolBox,
+    styles
+  ] = useContext(Context)
   const pOptions = expectedOptions
     ? options.filter((option) =>
         expectedOptions.find((eOption) => eOption === option.value)
       )
     : options
-  const [selectedOption, setSelectedOption] = useState(pOptions[0])
-
-  const addFieldObserver = () =>
-    onChange([...fields, BlankJSONInterface[selectedOption.value]])
 
   return (
-    <Container>
+    <Container style={styles.toolBox}>
       <label>Add Field</label>
       <p className='description'>Create a field using these Custom Fields</p>
-      <Select
-        className='select'
-        options={pOptions}
-        value={selectedOption}
-        onChange={(newValue) => setSelectedOption(newValue)}
-        components={{
-          Option: CustomSelectOption,
-          SingleValue: CustomSelectValue
-        }}
-      />
       <div className='actions'>
         <Button
           className='clear-button'
+          style={styles.toolBoxElements?.clearButton}
           onClick={() => {
             if (
               window.confirm(
@@ -99,11 +82,20 @@ const ToolBox = () => {
           <BsTrash />
           &nbsp;&nbsp;Clear
         </Button>
-        <Button onClick={() => addFieldObserver()}>
-          <BsPlus size={20} />
-          &nbsp;&nbsp;Add Field
-        </Button>
       </div>
+      {pOptions.map((pOption, index) => (
+        <OptionButton
+          key={index}
+          style={styles.toolBoxElements?.optionButton}
+          onClick={() =>
+            onChange([...fields, BlankJSONInterface[pOption.value]])
+          }
+        >
+          <div className='icon'>{pOption.icon}</div>
+          <div className='label'>{pOption.label}</div>
+        </OptionButton>
+      ))}
+      {renderInToolBox && renderInToolBox}
     </Container>
   )
 }

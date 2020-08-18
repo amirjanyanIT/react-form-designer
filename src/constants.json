@@ -1,3 +1,5 @@
 {
-  "DEFAULT_LABEL": "Describe..."
+  "DEFAULT_HELPER_TEXT": "Click here and edit",
+  "NAME_PLACEHOLDER": "Type Field Name",
+  "DESCRIPTION_PLACEHOLDER": "Type Field Description"
 }

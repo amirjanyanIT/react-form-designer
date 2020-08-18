@@ -4,6 +4,7 @@ import Input from '../../StyledElements/Input'
 import Block from '../../StyledElements/Block'
 import Title from '../../StyledElements/Title'
 import IconButton from '../../StyledElements/IconButton'
+import LinkButton from '../../StyledElements/LinkButton'
 import constants from '../../constants.json'
 import { BsTrash, BsThreeDotsVertical } from 'react-icons/bs'
 
@@ -13,6 +14,7 @@ const RadioButton = ({
   onRequestToDelete = () => {}
 }) => {
   const [preview, setPreview] = useState(true)
+  const [describe, setDescribe] = useState(false)
 
   return (
     <OutsideClickHandler onOutsideClick={() => setPreview(true)}>
@@ -22,7 +24,7 @@ const RadioButton = ({
       >
         {preview ? (
           <Fragment>
-            <Title>{field.description || constants.DEFAULT_LABEL}</Title>
+            <Title>{field.name || constants.DEFAULT_HELPER_TEXT}</Title>
             <Input value='' disabled />
           </Fragment>
         ) : (
@@ -35,15 +37,30 @@ const RadioButton = ({
                 <BsTrash />
               </IconButton>
             </div>
-            <Title>{field.description || constants.DEFAULT_LABEL}</Title>
+            <Title>{field.name || constants.NAME_PLACEHOLDER}</Title>
             <Input
-              placeholder={constants.DEFAULT_LABEL}
-              value={field.description}
+              placeholder={constants.NAME_PLACEHOLDER}
+              value={field.name}
               type='text'
               onChange={({ target: { value } }) =>
-                onChange({ ...field, description: value })
+                onChange({ ...field, name: value })
               }
             />
+            {!describe && !field.description && (
+              <LinkButton onClick={() => setDescribe(true)}>
+                + Describe
+              </LinkButton>
+            )}
+            {(describe || field.description) && (
+              <Input
+                placeholder={constants.DESCRIPTION_PLACEHOLDER}
+                value={field.description}
+                type='text'
+                onChange={({ target: { value } }) =>
+                  onChange({ ...field, description: value })
+                }
+              />
+            )}
           </Fragment>
         )}
       </Block>

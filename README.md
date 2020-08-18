@@ -38,11 +38,28 @@ const App = () => {
           'CONTACT_FIELD'
         ]
       }
+      renderInToolBox={
+        <button>Custom Button</button>
+      }
+      styles={{
+        mainContainer: {}
+        workGround: {}
+        toolBox: {}
+        toolBoxElements: {
+          clearButton:{}
+          optionButton:{}
+        }
+      }}
     >
   )
 }
 ```
 
+## Optional Parameters
+
+- expectedOptions
+- styles
+- renderInToolBox
 
 ## License
 

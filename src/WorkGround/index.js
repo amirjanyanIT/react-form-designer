@@ -200,10 +200,10 @@ const SortableList = SortableContainer(() => {
 })
 
 export default () => {
-  const [fields, onChange] = useContext(Context)
+  const [fields, onChange, , , styles] = useContext(Context)
 
   return (
-    <Container>
+    <Container style={styles.workGround}>
       <SortableList
         distance={1}
         lockAxis='y'

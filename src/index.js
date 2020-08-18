@@ -11,17 +11,21 @@ const MainContainer = styled.div`
   min-width: 920px;
   min-height: 600px;
   font-family: 'Segoe UI';
+  color: #4a4a4a;
 `
 
 export default ({
   fields = null,
   onChange = () => {},
   styles = {},
-  expectedOptions = null
+  expectedOptions = null,
+  renderInToolBox = null
 }) => {
   return (
-    <FieldsContext.Provider value={[fields, onChange, expectedOptions]}>
-      <MainContainer styles={styles}>
+    <FieldsContext.Provider
+      value={[fields, onChange, expectedOptions, renderInToolBox, styles]}
+    >
+      <MainContainer styles={styles.mainContainer}>
         <WorkGround />
         <Tools />
       </MainContainer>

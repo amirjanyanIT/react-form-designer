@@ -4,8 +4,8 @@ export default styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 360px;
-  min-height: 100px;
+  width: 400px;
+  min-height: 120px;
   margin: 10px 0;
   padding: 15px 10px;
   box-shadow: 1px 1px 13px 0px #cac2c2;
@@ -13,7 +13,7 @@ export default styled.div`
   background-color: white;
   border: 1px solid transparent;
   &:hover {
-    border: 1px solid #9c9c9c;
+    border: 1px solid #c1bbbb;
   }
   &.edit {
     &:hover {
@@ -21,6 +21,7 @@ export default styled.div`
     }
     .header {
       display: flex;
+      align-items: center;
       justify-content: space-between;
     }
   }

@@ -38,8 +38,6 @@ const SortableList = SortableContainer(({ options, setOptions }) => {
           option={option}
           optionIndex={index}
           index={index}
-          lockAxis='y'
-          lockToContainerEdges
           key={`sortable-multiselect-item-${index}`}
           setOptions={setOptions}
           options={options}
@@ -55,6 +53,7 @@ const MultiSelect = ({
   onRequestToDelete = () => {}
 }) => {
   const [preview, setPreview] = useState(true)
+  const [describe, setDescribe] = useState(false)
 
   return (
     <OutsideClickHandler onOutsideClick={() => setPreview(true)}>
@@ -64,7 +63,7 @@ const MultiSelect = ({
       >
         {preview ? (
           <Fragment>
-            <Title>{field.description || constants.DEFAULT_LABEL}</Title>
+            <Title>{field.name || constants.DEFAULT_HELPER_TEXT}</Title>
             <Input value='' disabled />
           </Fragment>
         ) : (
@@ -77,24 +76,39 @@ const MultiSelect = ({
                 <BsTrash />
               </IconButton>
             </div>
-            <Title>{field.description || constants.DEFAULT_LABEL}</Title>
+            <Title>{field.name || constants.NAME_PLACEHOLDER}</Title>
             <Input
-              placeholder={constants.DEFAULT_LABEL}
-              value={field.description}
+              placeholder={constants.NAME_PLACEHOLDER}
+              value={field.name}
               type='text'
               onChange={({ target: { value } }) =>
-                onChange({ ...field, description: value })
+                onChange({ ...field, name: value })
               }
             />
+            {!describe && !field.description && (
+              <LinkButton onClick={() => setDescribe(true)}>
+                + Describe
+              </LinkButton>
+            )}
+            {(describe || field.description) && (
+              <Input
+                placeholder={constants.DESCRIPTION_PLACEHOLDER}
+                value={field.description}
+                type='text'
+                onChange={({ target: { value } }) =>
+                  onChange({ ...field, description: value })
+                }
+              />
+            )}
             <SortableList
               options={field.options}
+              lockAxis='y'
               setOptions={(options) => {
                 onChange({
                   ...field,
                   options: options
                 })
               }}
-              hideSortableGhost={false}
               distance={1}
               onSortEnd={({ oldIndex, newIndex }) => {
                 onChange({
