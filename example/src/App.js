@@ -11,6 +11,11 @@ const App = () => {
     <FormDesigner
       fields={fields}
       onChange={(newFields) => setFields(newFields)}
+      // expectedOptions={[
+      //   'PARAGRAPH_TEXT',
+      //   'NUMBER',
+      //   'DROPDOWN'
+      // ]}
     />
   )
 }

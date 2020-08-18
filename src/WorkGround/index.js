@@ -11,6 +11,8 @@ import DropDown from '../Options/DropDown'
 import MultiSelect from '../Options/MultiSelect'
 import DateInput from '../Options/DateInput'
 import Attachment from '../Options/Attachment'
+import RadioButton from '../Options/RadioButton'
+import ContactField from '../Options/ContactField'
 import arrayMove from 'array-move'
 
 const Container = styled.div`
@@ -126,6 +128,38 @@ const SortableItem = SortableElement(({ field, fieldIndex }) => {
       case 'ATTACHMENT':
         return (
           <Attachment
+            field={field}
+            onChange={(updatedField) => {
+              onChange(
+                fields.map((field, cIndex) =>
+                  fieldIndex === cIndex ? updatedField : field
+                )
+              )
+            }}
+            onRequestToDelete={() =>
+              onChange(fields.filter((_field, cindex) => fieldIndex !== cindex))
+            }
+          />
+        )
+      case 'RADIO_BUTTON':
+        return (
+          <RadioButton
+            field={field}
+            onChange={(updatedField) => {
+              onChange(
+                fields.map((field, cIndex) =>
+                  fieldIndex === cIndex ? updatedField : field
+                )
+              )
+            }}
+            onRequestToDelete={() =>
+              onChange(fields.filter((_field, cindex) => fieldIndex !== cindex))
+            }
+          />
+        )
+      case 'CONTACT_FIELD':
+        return (
+          <ContactField
             field={field}
             onChange={(updatedField) => {
               onChange(

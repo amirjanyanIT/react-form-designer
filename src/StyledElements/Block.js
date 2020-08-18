@@ -4,8 +4,8 @@ export default styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 320px;
-  min-height: 60px;
+  width: 360px;
+  min-height: 100px;
   margin: 10px 0;
   padding: 15px 10px;
   box-shadow: 1px 1px 13px 0px #cac2c2;

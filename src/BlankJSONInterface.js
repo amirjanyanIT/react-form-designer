@@ -28,5 +28,13 @@ export default {
   ATTACHMENT: {
     type: 'ATTACHMENT',
     description: ''
+  },
+  RADIO_BUTTON: {
+    type: 'RADIO_BUTTON',
+    description: ''
+  },
+  CONTACT_FIELD: {
+    type: 'CONTACT_FIELD',
+    description: ''
   }
 }

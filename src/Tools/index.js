@@ -40,8 +40,13 @@ const CustomSelectValue = (props) => (
 )
 
 const ToolBox = () => {
-  const [selectedOption, setSelectedOption] = useState(options[0])
-  const [fields, onChange] = useContext(Context)
+  const [fields, onChange, expectedOptions] = useContext(Context)
+  const pOptions = expectedOptions
+    ? options.filter((option) =>
+        expectedOptions.find((eOption) => eOption === option.value)
+      )
+    : options
+  const [selectedOption, setSelectedOption] = useState(pOptions[0])
 
   const addFieldObserver = () =>
     onChange([...fields, BlankJSONInterface[selectedOption.value]])
@@ -52,7 +57,7 @@ const ToolBox = () => {
       <p className='description'>Create a field using these Custom Fields</p>
       <Select
         className='select'
-        options={options}
+        options={pOptions}
         value={selectedOption}
         onChange={(newValue) => setSelectedOption(newValue)}
         components={{

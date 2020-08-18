@@ -5,7 +5,7 @@ export default styled.button`
   height: 30px;
   border: none;
   color: #f1f1f1;
-  background-color: #636363;
+  background-color: #2684ff;
   font-weight: bold;
   border-radius: 5px;
   cursor: pointer;
