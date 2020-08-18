@@ -206,6 +206,7 @@ export default () => {
     <Container style={styles.workGround}>
       <SortableList
         distance={1}
+        helperClass='sortableHelper-UIContainer'
         lockAxis='y'
         lockToContainerEdges
         onSortEnd={({ oldIndex, newIndex }) => {

@@ -38,7 +38,7 @@ const SortableList = SortableContainer(({ options, setOptions }) => {
           option={option}
           optionIndex={index}
           index={index}
-          key={`sortable-dropdown-item-${index}`}
+          key={`dropdown-item-${index}`}
           setOptions={setOptions}
           options={options}
         />
@@ -102,6 +102,7 @@ const DropDown = ({
             )}
             <SortableList
               options={field.options}
+              helperClass='sortableHelper-dropdown'
               setOptions={(options) => {
                 onChange({
                   ...field,

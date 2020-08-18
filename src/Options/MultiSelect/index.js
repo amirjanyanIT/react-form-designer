@@ -38,7 +38,7 @@ const SortableList = SortableContainer(({ options, setOptions }) => {
           option={option}
           optionIndex={index}
           index={index}
-          key={`sortable-multiselect-item-${index}`}
+          key={`multiselect-option-${index}`}
           setOptions={setOptions}
           options={options}
         />
@@ -103,6 +103,7 @@ const MultiSelect = ({
             <SortableList
               options={field.options}
               lockAxis='y'
+              helperClass='sortableHelper-dropdown'
               setOptions={(options) => {
                 onChange({
                   ...field,

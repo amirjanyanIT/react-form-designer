@@ -12,6 +12,13 @@ const MainContainer = styled.div`
   min-height: 600px;
   font-family: 'Segoe UI';
   color: #4a4a4a;
+  .sortableHelper-UIContainer {
+    z-index: 1600;
+  }
+  .sortableHelper-dropdown,
+  .sortableHelper-dropdown {
+    z-index: 1500;
+  }
 `
 
 export default ({
