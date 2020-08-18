@@ -32,7 +32,8 @@ const Container = styled.div`
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 100px;
+      min-width: 100px;
+      padding: 5px 15px;
       margin-left: 10px;
       &.clear-button {
         background-color: #404040;
@@ -96,11 +97,11 @@ const ToolBox = () => {
           }}
         >
           <BsTrash />
-          &nbsp;&nbsp;Add Field
+          &nbsp;&nbsp;Clear
         </Button>
         <Button onClick={() => addFieldObserver()}>
           <BsPlus size={20} />
-          &nbsp;&nbsp;Clear
+          &nbsp;&nbsp;Add Field
         </Button>
       </div>
     </Container>
