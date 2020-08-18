@@ -94,6 +94,7 @@ const MultiSelect = ({
                   options: options
                 })
               }}
+              hideSortableGhost={false}
               distance={1}
               onSortEnd={({ oldIndex, newIndex }) => {
                 onChange({
