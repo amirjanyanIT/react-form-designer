@@ -32,7 +32,7 @@ export default ({
     <FieldsContext.Provider
       value={[fields, onChange, expectedOptions, renderInToolBox, styles]}
     >
-      <MainContainer styles={styles.mainContainer}>
+      <MainContainer style={styles.mainContainer}>
         <WorkGround />
         <Tools />
       </MainContainer>
