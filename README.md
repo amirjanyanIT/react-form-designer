@@ -25,10 +25,24 @@ const App = () => {
     <FormDesigner 
       fields={fields} 
       onChange={(updatedFields) => setFields(updatedFields)}
+      expectedOptions={
+        [
+          'SINGLE_LINE_TEXT',
+          'PARAGRAPH_TEXT',
+          'NUMBER',
+          'DROPDOWN',
+          'MULTI_SELECT',
+          'DATE',
+          'ATTACHMENT',
+          'RADIO_BUTTON',
+          'CONTACT_FIELD'
+        ]
+      }
     >
   )
 }
 ```
+
 
 ## License
 

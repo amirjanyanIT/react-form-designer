@@ -5,6 +5,8 @@ import Context from '../Context'
 import Button from '../StyledElements/Button'
 import Select, { components } from 'react-select'
 
+import { BsPlus, BsTrash } from 'react-icons/bs'
+
 import BlankJSONInterface from '../BlankJSONInterface'
 import options from './options'
 
@@ -21,6 +23,21 @@ const Container = styled.div`
   .select,
   button {
     margin-bottom: 10px;
+  }
+
+  .actions {
+    display: flex;
+    justify-content: flex-end;
+    button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100px;
+      margin-left: 10px;
+      &.clear-button {
+        background-color: #404040;
+      }
+    }
   }
 `
 
@@ -65,7 +82,27 @@ const ToolBox = () => {
           SingleValue: CustomSelectValue
         }}
       />
-      <Button onClick={() => addFieldObserver()}>Add Field</Button>
+      <div className='actions'>
+        <Button
+          className='clear-button'
+          onClick={() => {
+            if (
+              window.confirm(
+                'Are you sure?, do you want delete described options'
+              )
+            ) {
+              onChange([])
+            }
+          }}
+        >
+          <BsTrash />
+          &nbsp;&nbsp;Add Field
+        </Button>
+        <Button onClick={() => addFieldObserver()}>
+          <BsPlus size={20} />
+          &nbsp;&nbsp;Clear
+        </Button>
+      </div>
     </Container>
   )
 }
