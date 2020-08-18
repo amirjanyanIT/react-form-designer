@@ -10,7 +10,6 @@ const MainContainer = styled.div`
   display: flex;
   min-width: 920px;
   min-height: 600px;
-  background-color: white;
   font-family: 'Segoe UI';
 `
 

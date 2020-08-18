@@ -10,6 +10,7 @@ export default styled.div`
   padding: 15px 10px;
   box-shadow: 1px 1px 13px 0px #cac2c2;
   border-radius: 3px;
+  background-color: white;
   border: 1px solid transparent;
   &:hover {
     border: 1px solid #9c9c9c;
