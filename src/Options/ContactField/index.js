@@ -11,6 +11,7 @@ import { BsTrash, BsPerson } from 'react-icons/bs'
 const ContactField = ({
   field,
   onChange = () => {},
+  onFieldEdit = () => {},
   onRequestToDelete = () => {}
 }) => {
   const [preview, setPreview] = useState(true)
@@ -19,7 +20,12 @@ const ContactField = ({
   return (
     <OutsideClickHandler onOutsideClick={() => setPreview(true)}>
       <Block
-        onClick={() => setPreview(false)}
+        onClick={() => {
+          if (preview) {
+            onFieldEdit(field)
+          }
+          setPreview(false)
+        }}
         className={`${preview ? 'preview' : 'edit'}`}
       >
         {preview ? (
@@ -42,9 +48,10 @@ const ContactField = ({
               placeholder={constants.NAME_PLACEHOLDER}
               value={field.name}
               type='text'
-              onChange={({ target: { value } }) =>
+              onChange={({ target: { value } }) => {
+                onFieldEdit({ ...field, name: value })
                 onChange({ ...field, name: value })
-              }
+              }}
             />
             {!describe && !field.description && (
               <LinkButton onClick={() => setDescribe(true)}>
@@ -56,9 +63,10 @@ const ContactField = ({
                 placeholder={constants.DESCRIPTION_PLACEHOLDER}
                 value={field.description}
                 type='text'
-                onChange={({ target: { value } }) =>
+                onChange={({ target: { value } }) => {
+                  onFieldEdit({ ...field, description: value })
                   onChange({ ...field, description: value })
-                }
+                }}
               />
             )}
           </Fragment>

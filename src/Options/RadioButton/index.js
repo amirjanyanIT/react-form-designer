@@ -11,7 +11,8 @@ import { BsTrash, BsThreeDotsVertical } from 'react-icons/bs'
 const RadioButton = ({
   field,
   onChange = () => {},
-  onRequestToDelete = () => {}
+  onRequestToDelete = () => {},
+  onFieldEdit = () => {}
 }) => {
   const [preview, setPreview] = useState(true)
   const [describe, setDescribe] = useState(false)
@@ -19,7 +20,12 @@ const RadioButton = ({
   return (
     <OutsideClickHandler onOutsideClick={() => setPreview(true)}>
       <Block
-        onClick={() => setPreview(false)}
+        onClick={() => {
+          if (preview) {
+            onFieldEdit(field)
+          }
+          setPreview(false)
+        }}
         className={`${preview ? 'preview' : 'edit'}`}
       >
         {preview ? (
@@ -42,9 +48,10 @@ const RadioButton = ({
               placeholder={constants.NAME_PLACEHOLDER}
               value={field.name}
               type='text'
-              onChange={({ target: { value } }) =>
+              onChange={({ target: { value } }) => {
+                onFieldEdit({ ...field, name: value })
                 onChange({ ...field, name: value })
-              }
+              }}
             />
             {!describe && !field.description && (
               <LinkButton onClick={() => setDescribe(true)}>
@@ -56,9 +63,10 @@ const RadioButton = ({
                 placeholder={constants.DESCRIPTION_PLACEHOLDER}
                 value={field.description}
                 type='text'
-                onChange={({ target: { value } }) =>
+                onChange={({ target: { value } }) => {
+                  onFieldEdit({ ...field, description: value })
                   onChange({ ...field, description: value })
-                }
+                }}
               />
             )}
           </Fragment>

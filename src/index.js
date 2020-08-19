@@ -26,11 +26,21 @@ export default ({
   onChange = () => {},
   styles = {},
   expectedOptions = null,
-  renderInToolBox = null
+  renderInToolBox = null,
+  onFieldEdit = () => {},
+  onFieldDelete = () => {}
 }) => {
   return (
     <FieldsContext.Provider
-      value={[fields, onChange, expectedOptions, renderInToolBox, styles]}
+      value={[
+        fields,
+        onChange,
+        expectedOptions,
+        renderInToolBox,
+        styles,
+        onFieldEdit,
+        onFieldDelete
+      ]}
     >
       <MainContainer style={styles.mainContainer}>
         <WorkGround />

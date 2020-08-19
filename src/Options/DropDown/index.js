@@ -50,7 +50,8 @@ const SortableList = SortableContainer(({ options, setOptions }) => {
 const DropDown = ({
   field,
   onChange = () => {},
-  onRequestToDelete = () => {}
+  onRequestToDelete = () => {},
+  onFieldEdit = () => {}
 }) => {
   const [preview, setPreview] = useState(true)
   const [describe, setDescribe] = useState(false)
@@ -58,7 +59,12 @@ const DropDown = ({
   return (
     <OutsideClickHandler onOutsideClick={() => setPreview(true)}>
       <Block
-        onClick={() => setPreview(false)}
+        onClick={() => {
+          if (preview) {
+            onFieldEdit(field)
+          }
+          setPreview(false)
+        }}
         className={`${preview ? 'preview' : 'edit'}`}
       >
         {preview ? (
@@ -81,9 +87,10 @@ const DropDown = ({
               placeholder={constants.NAME_PLACEHOLDER}
               value={field.name}
               type='text'
-              onChange={({ target: { value } }) =>
+              onChange={({ target: { value } }) => {
+                onFieldEdit({ ...field, name: value })
                 onChange({ ...field, name: value })
-              }
+              }}
             />
             {!describe && !field.description && (
               <LinkButton onClick={() => setDescribe(true)}>
@@ -95,15 +102,20 @@ const DropDown = ({
                 placeholder={constants.DESCRIPTION_PLACEHOLDER}
                 value={field.description}
                 type='text'
-                onChange={({ target: { value } }) =>
+                onChange={({ target: { value } }) => {
+                  onFieldEdit({ ...field, description: value })
                   onChange({ ...field, description: value })
-                }
+                }}
               />
             )}
             <SortableList
               options={field.options}
               helperClass='sortableHelper-dropdown'
               setOptions={(options) => {
+                onFieldEdit({
+                  ...field,
+                  options: options
+                })
                 onChange({
                   ...field,
                   options: options
@@ -112,6 +124,10 @@ const DropDown = ({
               lockAxis='y'
               distance={1}
               onSortEnd={({ oldIndex, newIndex }) => {
+                onFieldEdit({
+                  ...field,
+                  options: arrayMove(field.options, oldIndex, newIndex)
+                })
                 onChange({
                   ...field,
                   options: arrayMove(field.options, oldIndex, newIndex)
@@ -119,9 +135,10 @@ const DropDown = ({
               }}
             />
             <LinkButton
-              onClick={() =>
+              onClick={() => {
+                onFieldEdit({ ...field, options: [...field.options, ''] })
                 onChange({ ...field, options: [...field.options, ''] })
-              }
+              }}
             >
               <BsPlus />
               Add Option

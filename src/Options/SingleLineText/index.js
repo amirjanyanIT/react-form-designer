@@ -11,7 +11,8 @@ import { BsTrash, BsType } from 'react-icons/bs'
 const SingleLineText = ({
   field,
   onChange = () => {},
-  onRequestToDelete = () => {}
+  onRequestToDelete = () => {},
+  onFieldEdit = () => {}
 }) => {
   const [preview, setPreview] = useState(true)
   const [describe, setDescribe] = useState(false)
@@ -19,7 +20,12 @@ const SingleLineText = ({
   return (
     <OutsideClickHandler onOutsideClick={() => setPreview(true)}>
       <Block
-        onClick={() => setPreview(false)}
+        onClick={() => {
+          if (preview) {
+            onFieldEdit(field)
+          }
+          setPreview(false)
+        }}
         className={`${preview ? 'preview' : 'edit'}`}
       >
         {preview ? (
@@ -41,12 +47,16 @@ const SingleLineText = ({
             <Input
               placeholder={constants.NAME_PLACEHOLDER}
               value={field.name}
-              onChange={({ target: { value } }) =>
+              onChange={({ target: { value } }) => {
+                onFieldEdit({
+                  ...field,
+                  name: value
+                })
                 onChange({
                   ...field,
                   name: value
                 })
-              }
+              }}
             />
             {!describe && !field.description && (
               <LinkButton onClick={() => setDescribe(true)}>
@@ -58,9 +68,10 @@ const SingleLineText = ({
                 placeholder={constants.DESCRIPTION_PLACEHOLDER}
                 value={field.description}
                 type='text'
-                onChange={({ target: { value } }) =>
+                onChange={({ target: { value } }) => {
+                  onFieldEdit({ ...field, description: value })
                   onChange({ ...field, description: value })
-                }
+                }}
               />
             )}
           </Fragment>

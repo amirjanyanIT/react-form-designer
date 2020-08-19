@@ -5,7 +5,7 @@ import FormDesigner from 'react-form-designer'
 const App = () => {
   const [fields, setFields] = useState([]);
   
-  useEffect(() => console.log(fields), [fields])
+  // useEffect(() => console.log(fields), [fields])
 
   return (
     <FormDesigner
@@ -16,6 +16,12 @@ const App = () => {
       //   'NUMBER',
       //   'DROPDOWN'
       // ]}
+      onFieldEdit={(fieldOnEdit) => {
+        console.log({ fieldOnEdit })
+      }}
+      onFieldDelete={(deletedField) => {
+        console.log({ deletedField })
+      }}
     />
   )
 }

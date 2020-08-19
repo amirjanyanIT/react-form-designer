@@ -25,7 +25,9 @@ const Container = styled.div`
 `
 
 const SortableItem = SortableElement(({ field, fieldIndex }) => {
-  const [fields, onChange] = useContext(Context)
+  const [fields, onChange, , , , onFieldEdit, onFieldDelete] = useContext(
+    Context
+  )
 
   const renderOptionContainer = () => {
     switch (field.type) {
@@ -33,6 +35,7 @@ const SortableItem = SortableElement(({ field, fieldIndex }) => {
         return (
           <SingleLineText
             field={field}
+            onFieldEdit={onFieldEdit}
             onChange={(updatedField) => {
               onChange(
                 fields.map((field, cIndex) =>
@@ -41,7 +44,15 @@ const SortableItem = SortableElement(({ field, fieldIndex }) => {
               )
             }}
             onRequestToDelete={() =>
-              onChange(fields.filter((_field, cindex) => fieldIndex !== cindex))
+              onChange(
+                fields.filter((field, cindex) => {
+                  if (fieldIndex !== cindex) {
+                    return true
+                  }
+                  onFieldDelete(field)
+                  return false
+                })
+              )
             }
           />
         )
@@ -49,6 +60,7 @@ const SortableItem = SortableElement(({ field, fieldIndex }) => {
         return (
           <ParagraphText
             field={field}
+            onFieldEdit={onFieldEdit}
             onChange={(updatedField) => {
               onChange(
                 fields.map((field, cIndex) =>
@@ -57,7 +69,15 @@ const SortableItem = SortableElement(({ field, fieldIndex }) => {
               )
             }}
             onRequestToDelete={() =>
-              onChange(fields.filter((_field, cindex) => fieldIndex !== cindex))
+              onChange(
+                fields.filter((field, cindex) => {
+                  if (fieldIndex !== cindex) {
+                    return true
+                  }
+                  onFieldDelete(field)
+                  return false
+                })
+              )
             }
           />
         )
@@ -65,6 +85,7 @@ const SortableItem = SortableElement(({ field, fieldIndex }) => {
         return (
           <NumberInput
             field={field}
+            onFieldEdit={onFieldEdit}
             onChange={(updatedField) => {
               onChange(
                 fields.map((field, cIndex) =>
@@ -73,7 +94,15 @@ const SortableItem = SortableElement(({ field, fieldIndex }) => {
               )
             }}
             onRequestToDelete={() =>
-              onChange(fields.filter((_field, cindex) => fieldIndex !== cindex))
+              onChange(
+                fields.filter((field, cindex) => {
+                  if (fieldIndex !== cindex) {
+                    return true
+                  }
+                  onFieldDelete(field)
+                  return false
+                })
+              )
             }
           />
         )
@@ -81,6 +110,7 @@ const SortableItem = SortableElement(({ field, fieldIndex }) => {
         return (
           <DropDown
             field={field}
+            onFieldEdit={onFieldEdit}
             onChange={(updatedField) => {
               onChange(
                 fields.map((field, cIndex) =>
@@ -89,7 +119,15 @@ const SortableItem = SortableElement(({ field, fieldIndex }) => {
               )
             }}
             onRequestToDelete={() =>
-              onChange(fields.filter((_field, cindex) => fieldIndex !== cindex))
+              onChange(
+                fields.filter((field, cindex) => {
+                  if (fieldIndex !== cindex) {
+                    return true
+                  }
+                  onFieldDelete(field)
+                  return false
+                })
+              )
             }
           />
         )
@@ -97,6 +135,7 @@ const SortableItem = SortableElement(({ field, fieldIndex }) => {
         return (
           <MultiSelect
             field={field}
+            onFieldEdit={onFieldEdit}
             onChange={(updatedField) => {
               onChange(
                 fields.map((field, cIndex) =>
@@ -105,7 +144,15 @@ const SortableItem = SortableElement(({ field, fieldIndex }) => {
               )
             }}
             onRequestToDelete={() =>
-              onChange(fields.filter((_field, cindex) => fieldIndex !== cindex))
+              onChange(
+                fields.filter((field, cindex) => {
+                  if (fieldIndex !== cindex) {
+                    return true
+                  }
+                  onFieldDelete(field)
+                  return false
+                })
+              )
             }
           />
         )
@@ -113,6 +160,7 @@ const SortableItem = SortableElement(({ field, fieldIndex }) => {
         return (
           <DateInput
             field={field}
+            onFieldEdit={onFieldEdit}
             onChange={(updatedField) => {
               onChange(
                 fields.map((field, cIndex) =>
@@ -121,7 +169,15 @@ const SortableItem = SortableElement(({ field, fieldIndex }) => {
               )
             }}
             onRequestToDelete={() =>
-              onChange(fields.filter((_field, cindex) => fieldIndex !== cindex))
+              onChange(
+                fields.filter((field, cindex) => {
+                  if (fieldIndex !== cindex) {
+                    return true
+                  }
+                  onFieldDelete(field)
+                  return false
+                })
+              )
             }
           />
         )
@@ -129,6 +185,7 @@ const SortableItem = SortableElement(({ field, fieldIndex }) => {
         return (
           <Attachment
             field={field}
+            onFieldEdit={onFieldEdit}
             onChange={(updatedField) => {
               onChange(
                 fields.map((field, cIndex) =>
@@ -137,7 +194,15 @@ const SortableItem = SortableElement(({ field, fieldIndex }) => {
               )
             }}
             onRequestToDelete={() =>
-              onChange(fields.filter((_field, cindex) => fieldIndex !== cindex))
+              onChange(
+                fields.filter((field, cindex) => {
+                  if (fieldIndex !== cindex) {
+                    return true
+                  }
+                  onFieldDelete(field)
+                  return false
+                })
+              )
             }
           />
         )
@@ -145,6 +210,7 @@ const SortableItem = SortableElement(({ field, fieldIndex }) => {
         return (
           <RadioButton
             field={field}
+            onFieldEdit={onFieldEdit}
             onChange={(updatedField) => {
               onChange(
                 fields.map((field, cIndex) =>
@@ -153,7 +219,15 @@ const SortableItem = SortableElement(({ field, fieldIndex }) => {
               )
             }}
             onRequestToDelete={() =>
-              onChange(fields.filter((_field, cindex) => fieldIndex !== cindex))
+              onChange(
+                fields.filter((field, cindex) => {
+                  if (fieldIndex !== cindex) {
+                    return true
+                  }
+                  onFieldDelete(field)
+                  return false
+                })
+              )
             }
           />
         )
@@ -161,6 +235,7 @@ const SortableItem = SortableElement(({ field, fieldIndex }) => {
         return (
           <ContactField
             field={field}
+            onFieldEdit={onFieldEdit}
             onChange={(updatedField) => {
               onChange(
                 fields.map((field, cIndex) =>
@@ -169,7 +244,15 @@ const SortableItem = SortableElement(({ field, fieldIndex }) => {
               )
             }}
             onRequestToDelete={() =>
-              onChange(fields.filter((_field, cindex) => fieldIndex !== cindex))
+              onChange(
+                fields.filter((field, cindex) => {
+                  if (fieldIndex !== cindex) {
+                    return true
+                  }
+                  onFieldDelete(field)
+                  return false
+                })
+              )
             }
           />
         )
