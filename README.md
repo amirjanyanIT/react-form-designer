@@ -50,6 +50,12 @@ const App = () => {
           optionButton:{}
         }
       }}
+      onFieldEdit={(fieldOnEdit) => {
+        console.log({ fieldOnEdit })
+      }}
+      onFieldDelete={(deletedField) => {
+        console.log({ deletedField })
+      }}
     >
   )
 }
@@ -60,6 +66,8 @@ const App = () => {
 - expectedOptions
 - styles
 - renderInToolBox
+- onFieldEdit
+- onFieldDelete
 
 ## License
 
