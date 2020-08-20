@@ -22,23 +22,107 @@ const App = () => {
       onFieldDelete={(deletedField) => {
         console.log({ deletedField })
       }}
-      customFields={[
+      expectedOptions={[
+        'SINGLECHECKBOX',
+        'MULTIPLECHECKBOXES',
+        'DATEPICKER',
+        'DROPDOWNSELECT',
+        'SINGLELINETEXT',
+        'MULTIPLECHECKBOXES',
+        'MULTILINETEXT',
+        'FILE',
+        'RADIOSELECT',
+        'CONTACT',
+        'NUMBER'
+      ]}
+      customOptions={[
         {
-          icon: null,
-          type: "MY_CUSTOM_FIELD",
-          title: 'Custom Field',
-          renderIn: (
-            <div>This is custom JSX in field container</div>
-          )
+          type: 'SINGLECHECKBOX',
+          title: 'Single Check Box',
+          options: true,
+          renderIn: (field,fieldIndex) => {
+            return <div>this is custom JSX{fieldIndex}</div>
+          }
         },
         {
-          icon: null,
-          type: "MY_CUSTOM_FIELD_2",
-          title: 'Custom Field 2',
+          type: 'MULTIPLECHECKBOXES',
+          title: 'Multiple Checkboxes',
           options: true,
-          renderIn: (
-            <div>This is custom JSX in field container</div>
-          )
+          renderIn: (field,fieldIndex) => {
+            return <div>this is custom JSX{fieldIndex}</div>
+          }
+        },
+        {
+          type: 'DATEPICKER',
+          title: 'Date Picker',
+          options: true,
+          renderIn: (field,fieldIndex) => {
+            return <div>this is custom JSX{fieldIndex}</div>
+          }
+        },
+        {
+          type: 'DROPDOWNSELECT',
+          title: 'Dropdown Select',
+          options: true,
+          renderIn: (field,fieldIndex) => {
+            return <div>this is custom JSX{fieldIndex}</div>
+          }
+        },
+        {
+          type: 'SINGLELINETEXT',
+          title: 'Single Line Text',
+          options: true,
+          renderIn: (field,fieldIndex) => {
+            return <div>this is custom JSX{fieldIndex}</div>
+          }
+        },
+        {
+          type: 'MULTIPLECHECKBOXES',
+          title: 'Multiple checkboxes',
+          options: true,
+          renderIn: (field,fieldIndex) => {
+            return <div>this is custom JSX{fieldIndex}</div>
+          }
+        },
+        {
+          type: 'MULTILINETEXT',
+          title: 'Multiline text',
+          options: true,
+          renderIn: (field,fieldIndex) => {
+            return <div>this is custom JSX{fieldIndex}</div>
+          }
+        },
+        {
+          type: 'FILE',
+          title: 'File',
+          options: true,
+          renderIn: (field,fieldIndex) => {
+            return <div>this is custom JSX{fieldIndex}</div>
+          }
+        },
+        {
+          type: 'RADIOSELECT',
+          title: 'Radio Select',
+          options: true,
+          renderIn: (field,fieldIndex) => {
+            return <div>this is custom JSX{fieldIndex}</div>
+          }
+        },
+        {
+          type: 'CONTACT',
+          title: 'Contact',
+          options: true,
+          renderIn: (field,fieldIndex) => {
+            return <div>this is custom JSX{fieldIndex}</div>
+          }
+        },
+        {
+          type: 'NUMBER',
+          title: 'Number',
+          options: true,
+          renderIn: (field,fieldIndex) => {
+            return <div>this is custom JSX{fieldIndex}</div>
+          }
         }
       ]}
     />
