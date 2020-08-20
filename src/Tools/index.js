@@ -59,10 +59,10 @@ const ToolBox = () => {
     customFields
   ] = useContext(Context)
   const pOptions = expectedOptions
-    ? options.filter((option) =>
+    ? [...options, ...customFields].filter((option) =>
         expectedOptions.find((eOption) => eOption === option.value)
       )
-    : options
+    : [...options, ...customFields]
 
   return (
     <Container style={styles.toolBox}>
@@ -86,20 +86,23 @@ const ToolBox = () => {
           &nbsp;&nbsp;Clear
         </Button>
       </div>
-      {[...pOptions, ...customFields].map((pOption, index) => (
+      {pOptions.map((pOption, index) => (
         <OptionButton
           key={index}
           style={styles.toolBoxElements?.optionButton}
-          onClick={() =>
-            onChange([
-              ...fields,
-              BlankJSONInterface[pOption.value] || {
-                type: pOption.type,
-                description: '',
-                name: ''
-              }
-            ])
-          }
+          onClick={() => {
+            const pushableBlankTemplate = BlankJSONInterface[pOption.value] || {
+              type: pOption.type,
+              description: '',
+              name: ''
+            }
+
+            if (pOption.options === true) {
+              pushableBlankTemplate.options = []
+            }
+
+            onChange([...fields, pushableBlankTemplate])
+          }}
         >
           <div className='icon'>{pOption.icon}</div>
           <div className='label'>{pOption.label || pOption.title}</div>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 
 import FormDesigner from 'react-form-designer'
 
@@ -27,6 +27,15 @@ const App = () => {
           icon: null,
           type: "MY_CUSTOM_FIELD",
           title: 'Custom Field',
+          renderIn: (
+            <div>This is custom JSX in field container</div>
+          )
+        },
+        {
+          icon: null,
+          type: "MY_CUSTOM_FIELD_2",
+          title: 'Custom Field 2',
+          options: true,
           renderIn: (
             <div>This is custom JSX in field container</div>
           )

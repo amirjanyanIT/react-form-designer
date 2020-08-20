@@ -64,6 +64,15 @@ const App = () => {
           renderIn: (
             <div>This is custom JSX in field container</div>
           )
+        },
+        {
+          icon: null,
+          type: "MY_CUSTOM_FIELD_2",
+          title: 'Custom Field 2',
+          options: true,
+          renderIn: (
+            <div>This is custom JSX in field container</div>
+          )
         }
       ]}
     >

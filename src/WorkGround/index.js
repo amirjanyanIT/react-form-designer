@@ -13,6 +13,7 @@ import DateInput from '../Options/DateInput'
 import Attachment from '../Options/Attachment'
 import RadioButton from '../Options/RadioButton'
 import CustomField from '../Options/CustomField'
+import CustomFieldsOptions from '../Options/CustomFieldsOptions'
 import arrayMove from 'array-move'
 
 const Container = styled.div`
@@ -238,13 +239,42 @@ const SortableItem = SortableElement(({ field, fieldIndex }) => {
             }
           />
         )
-      default:
+      default: {
+        const customField = customFields.find(
+          (customField) => field.type === customField.type
+        )
+        if (customField.options) {
+          return (
+            <CustomFieldsOptions
+              field={field}
+              customFieldInfo={customField}
+              onFieldEdit={onFieldEdit}
+              onChange={(updatedField) => {
+                onChange(
+                  fields.map((field, cIndex) =>
+                    fieldIndex === cIndex ? updatedField : field
+                  )
+                )
+              }}
+              onRequestToDelete={() =>
+                onChange(
+                  fields.filter((field, cindex) => {
+                    if (fieldIndex !== cindex) {
+                      return true
+                    }
+                    onFieldDelete(field)
+                    return false
+                  })
+                )
+              }
+            />
+          )
+        }
+
         return (
           <CustomField
             field={field}
-            customFieldInfo={customFields.find(
-              (customField) => field.type === customField.type
-            )}
+            customFieldInfo={customField}
             onFieldEdit={onFieldEdit}
             onChange={(updatedField) => {
               onChange(
@@ -266,6 +296,7 @@ const SortableItem = SortableElement(({ field, fieldIndex }) => {
             }
           />
         )
+      }
     }
   }
   return <div>{renderOptionContainer()}</div>
