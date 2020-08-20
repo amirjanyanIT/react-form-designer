@@ -49,6 +49,7 @@ const SortableList = SortableContainer(({ options, setOptions }) => {
 
 const CustomFieldsOptions = ({
   field,
+  fieldIndex,
   onChange = () => {},
   onRequestToDelete = () => {},
   onFieldEdit = () => {},
@@ -144,7 +145,8 @@ const CustomFieldsOptions = ({
               <BsPlus />
               Add Option
             </LinkButton>
-            {customFieldInfo.renderIn && customFieldInfo.renderIn}
+            {customFieldInfo.renderIn &&
+              customFieldInfo.renderIn(field, fieldIndex)}
           </Fragment>
         )}
       </Block>

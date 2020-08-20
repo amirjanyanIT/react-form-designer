@@ -60,7 +60,7 @@ const ToolBox = () => {
   ] = useContext(Context)
   const pOptions = expectedOptions
     ? [...options, ...customFields].filter((option) =>
-        expectedOptions.find((eOption) => eOption === option.value)
+        expectedOptions.find((eOption) => eOption === option.type)
       )
     : [...options, ...customFields]
 

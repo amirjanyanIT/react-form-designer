@@ -56,23 +56,23 @@ const App = () => {
       onFieldDelete={(deletedField) => {
         console.log({ deletedField })
       }}
-      customFields={[
+      customOptions={[
         {
           icon: null,
           type: "MY_CUSTOM_FIELD",
           title: 'Custom Field',
-          renderIn: (
-            <div>This is custom JSX in field container</div>
-          )
+          renderIn: (_field,fieldIndex) => {
+            return <div>this is custom JSX {fieldIndex}</div>
+          }
         },
         {
           icon: null,
           type: "MY_CUSTOM_FIELD_2",
           title: 'Custom Field 2',
           options: true,
-          renderIn: (
-            <div>This is custom JSX in field container</div>
-          )
+          renderIn: (_field,fieldIndex) => {
+            return <div>this is custom JSX {fieldIndex}</div>
+          }
         }
       ]}
     >

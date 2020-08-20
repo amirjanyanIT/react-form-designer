@@ -34,7 +34,7 @@ const SortableItem = SortableElement(({ field, fieldIndex }) => {
     ,
     onFieldEdit,
     onFieldDelete,
-    customFields
+    customOptions
   ] = useContext(Context)
 
   const renderOptionContainer = () => {
@@ -240,13 +240,14 @@ const SortableItem = SortableElement(({ field, fieldIndex }) => {
           />
         )
       default: {
-        const customField = customFields.find(
+        const customField = customOptions.find(
           (customField) => field.type === customField.type
         )
         if (customField.options) {
           return (
             <CustomFieldsOptions
               field={field}
+              fieldIndex={fieldIndex}
               customFieldInfo={customField}
               onFieldEdit={onFieldEdit}
               onChange={(updatedField) => {
@@ -274,6 +275,7 @@ const SortableItem = SortableElement(({ field, fieldIndex }) => {
         return (
           <CustomField
             field={field}
+            fieldIndex={fieldIndex}
             customFieldInfo={customField}
             onFieldEdit={onFieldEdit}
             onChange={(updatedField) => {

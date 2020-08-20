@@ -10,6 +10,7 @@ import { BsTrash } from 'react-icons/bs'
 
 const Attachment = ({
   field,
+  fieldIndex,
   onChange = () => {},
   onRequestToDelete = () => {},
   onFieldEdit = () => {},
@@ -70,7 +71,8 @@ const Attachment = ({
                 }}
               />
             )}
-            {customFieldInfo.renderIn && customFieldInfo.renderIn}
+            {customFieldInfo.renderIn &&
+              customFieldInfo.renderIn(field, fieldIndex)}
           </Fragment>
         )}
       </Block>
