@@ -7,8 +7,7 @@ import {
   BsCircle,
   BsJustifyLeft,
   BsType,
-  BsThreeDotsVertical,
-  BsPerson
+  BsThreeDotsVertical
 } from 'react-icons/bs'
 
 export default [
@@ -51,10 +50,5 @@ export default [
     label: 'Radio Button',
     value: 'RADIO_BUTTON',
     icon: <BsThreeDotsVertical size={15} />
-  },
-  {
-    label: 'Contact Field',
-    value: 'CONTACT_FIELD',
-    icon: <BsPerson size={15} />
   }
 ]

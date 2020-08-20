@@ -53,7 +53,10 @@ const ToolBox = () => {
     onChange,
     expectedOptions,
     renderInToolBox,
-    styles
+    styles,
+    ,
+    ,
+    customFields
   ] = useContext(Context)
   const pOptions = expectedOptions
     ? options.filter((option) =>
@@ -83,16 +86,23 @@ const ToolBox = () => {
           &nbsp;&nbsp;Clear
         </Button>
       </div>
-      {pOptions.map((pOption, index) => (
+      {[...pOptions, ...customFields].map((pOption, index) => (
         <OptionButton
           key={index}
           style={styles.toolBoxElements?.optionButton}
           onClick={() =>
-            onChange([...fields, BlankJSONInterface[pOption.value]])
+            onChange([
+              ...fields,
+              BlankJSONInterface[pOption.value] || {
+                type: pOption.type,
+                description: '',
+                name: ''
+              }
+            ])
           }
         >
           <div className='icon'>{pOption.icon}</div>
-          <div className='label'>{pOption.label}</div>
+          <div className='label'>{pOption.label || pOption.title}</div>
         </OptionButton>
       ))}
       {renderInToolBox && renderInToolBox}

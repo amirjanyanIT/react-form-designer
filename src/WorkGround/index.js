@@ -12,7 +12,7 @@ import MultiSelect from '../Options/MultiSelect'
 import DateInput from '../Options/DateInput'
 import Attachment from '../Options/Attachment'
 import RadioButton from '../Options/RadioButton'
-import ContactField from '../Options/ContactField'
+import CustomField from '../Options/CustomField'
 import arrayMove from 'array-move'
 
 const Container = styled.div`
@@ -25,9 +25,16 @@ const Container = styled.div`
 `
 
 const SortableItem = SortableElement(({ field, fieldIndex }) => {
-  const [fields, onChange, , , , onFieldEdit, onFieldDelete] = useContext(
-    Context
-  )
+  const [
+    fields,
+    onChange,
+    ,
+    ,
+    ,
+    onFieldEdit,
+    onFieldDelete,
+    customFields
+  ] = useContext(Context)
 
   const renderOptionContainer = () => {
     switch (field.type) {
@@ -231,10 +238,13 @@ const SortableItem = SortableElement(({ field, fieldIndex }) => {
             }
           />
         )
-      case 'CONTACT_FIELD':
+      default:
         return (
-          <ContactField
+          <CustomField
             field={field}
+            customFieldInfo={customFields.find(
+              (customField) => field.type === customField.type
+            )}
             onFieldEdit={onFieldEdit}
             onChange={(updatedField) => {
               onChange(
@@ -256,8 +266,6 @@ const SortableItem = SortableElement(({ field, fieldIndex }) => {
             }
           />
         )
-      default:
-        return null
     }
   }
   return <div>{renderOptionContainer()}</div>
@@ -265,7 +273,6 @@ const SortableItem = SortableElement(({ field, fieldIndex }) => {
 
 const SortableList = SortableContainer(() => {
   const [fields] = useContext(Context)
-
   return (
     <div>
       {fields.map((field, index) => (

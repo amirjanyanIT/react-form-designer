@@ -6,13 +6,14 @@ import Title from '../../StyledElements/Title'
 import IconButton from '../../StyledElements/IconButton'
 import LinkButton from '../../StyledElements/LinkButton'
 import constants from '../../constants.json'
-import { BsTrash, BsPerson } from 'react-icons/bs'
+import { BsTrash } from 'react-icons/bs'
 
-const ContactField = ({
+const Attachment = ({
   field,
   onChange = () => {},
+  onRequestToDelete = () => {},
   onFieldEdit = () => {},
-  onRequestToDelete = () => {}
+  customFieldInfo = {}
 }) => {
   const [preview, setPreview] = useState(true)
   const [describe, setDescribe] = useState(false)
@@ -37,7 +38,7 @@ const ContactField = ({
           <Fragment>
             <div className='header'>
               <Title>
-                <BsPerson /> Contact Field
+                {customFieldInfo.icon} {customFieldInfo.title}
               </Title>
               <IconButton onClick={() => onRequestToDelete()}>
                 <BsTrash />
@@ -69,6 +70,7 @@ const ContactField = ({
                 }}
               />
             )}
+            {customFieldInfo.renderIn && customFieldInfo.renderIn}
           </Fragment>
         )}
       </Block>
@@ -76,4 +78,4 @@ const ContactField = ({
   )
 }
 
-export default ContactField
+export default Attachment

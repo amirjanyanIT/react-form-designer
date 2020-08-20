@@ -28,7 +28,8 @@ export default ({
   expectedOptions = null,
   renderInToolBox = null,
   onFieldEdit = () => {},
-  onFieldDelete = () => {}
+  onFieldDelete = () => {},
+  customFields = []
 }) => {
   return (
     <FieldsContext.Provider
@@ -39,7 +40,8 @@ export default ({
         renderInToolBox,
         styles,
         onFieldEdit,
-        onFieldDelete
+        onFieldDelete,
+        customFields
       ]}
     >
       <MainContainer style={styles.mainContainer}>

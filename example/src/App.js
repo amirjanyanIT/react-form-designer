@@ -22,6 +22,16 @@ const App = () => {
       onFieldDelete={(deletedField) => {
         console.log({ deletedField })
       }}
+      customFields={[
+        {
+          icon: null,
+          type: "MY_CUSTOM_FIELD",
+          title: 'Custom Field',
+          renderIn: (
+            <div>This is custom JSX in field container</div>
+          )
+        }
+      ]}
     />
   )
 }
