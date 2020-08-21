@@ -14,7 +14,9 @@ const Option = ({ onChange, onRequestToDelete, value, optionIndex }) => {
         key={optionIndex}
         style={{ flex: 18, paddingRight: '20px' }}
         value={value}
-        onChange={({ target: { value } }) => onChange(value)}
+        onChange={({ target: { value: newValue } }) =>
+          onChange({ ...value, value: newValue })
+        }
       />
       <IconButton
         style={{ position: 'absolute', right: 0 }}

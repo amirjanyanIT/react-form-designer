@@ -3,7 +3,18 @@ import React, { useState } from 'react'
 import FormDesigner from 'react-form-designer'
 
 const App = () => {
-  const [fields, setFields] = useState([]);
+  const [fields, setFields] = useState([
+    {
+      "type": "DROPDOWNSELECT",
+      "description": "",
+      "name": "",
+      "options": [
+        {
+          "value": "asdsad"
+        }
+      ]
+    }
+  ]);
   
   // useEffect(() => console.log(fields), [fields])
 
@@ -11,11 +22,6 @@ const App = () => {
     <FormDesigner
       fields={fields}
       onChange={(newFields) => setFields(newFields)}
-      // expectedOptions={[
-      //   'PARAGRAPH_TEXT',
-      //   'NUMBER',
-      //   'DROPDOWN'
-      // ]}
       onFieldEdit={(fieldOnEdit) => {
         console.log({ fieldOnEdit })
       }}

@@ -87,7 +87,7 @@ const App = () => {
 - renderInToolBox
 - onFieldEdit
 - onFieldDelete
-- customFields
+- customOptions
 ## License
 
 MIT © [AmirjanyanIT](https://github.com/AmirjanyanIT)

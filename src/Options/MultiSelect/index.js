@@ -14,7 +14,7 @@ import { BsTrash, BsCardChecklist, BsPlus } from 'react-icons/bs'
 const SortableItem = SortableElement(
   ({ option, optionIndex, setOptions, options }) => (
     <Option
-      value={option}
+      value={option.value}
       onChange={(newValue) => {
         setOptions(
           options.map((option, cIndex) =>
@@ -136,8 +136,14 @@ const MultiSelect = ({
             />
             <LinkButton
               onClick={() => {
-                onFieldEdit({ ...field, options: [...field.options, ''] })
-                onChange({ ...field, options: [...field.options, ''] })
+                onFieldEdit({
+                  ...field,
+                  options: [...field.options, { value: '' }]
+                })
+                onChange({
+                  ...field,
+                  options: [...field.options, { value: '' }]
+                })
               }}
             >
               <BsPlus />
