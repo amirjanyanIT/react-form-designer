@@ -6,7 +6,7 @@ import NotBorderedInput from '../../StyledElements/NotBorderedInput'
 
 const Option = ({ onChange, onRequestToDelete, value, optionIndex }) => {
   return (
-    <SelectOption style={{ position: 'relative' }}>
+    <SelectOption>
       <IconButton style={{ flex: 1, textAlign: 'left' }}>
         <BsJustify />
       </IconButton>

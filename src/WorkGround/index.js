@@ -318,7 +318,7 @@ const SortableItem = SortableElement(({ field, fieldIndex }) => {
 const SortableList = SortableContainer(() => {
   const [fields] = useContext(Context)
   return (
-    <div>
+    <div style={{ zIndex: 9000 }}>
       {fields.map((field, index) => (
         <SortableItem
           index={index}

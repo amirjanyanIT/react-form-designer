@@ -5,4 +5,5 @@ export default styled.div`
   justify-content: space-between;
   margin-top: 10px;
   border-bottom: 1px solid grey;
+  z-index: 9500;
 `
