@@ -13,7 +13,7 @@ const Option = ({ onChange, onRequestToDelete, value, optionIndex }) => {
       <NotBorderedInput
         key={optionIndex}
         style={{ flex: 18, paddingRight: '20px' }}
-        value={value}
+        value={value.value}
         onChange={({ target: { value: newValue } }) =>
           onChange({ ...value, value: newValue })
         }

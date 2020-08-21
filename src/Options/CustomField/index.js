@@ -14,7 +14,8 @@ const Attachment = ({
   onChange = () => {},
   onRequestToDelete = () => {},
   onFieldEdit = () => {},
-  customFieldInfo = {}
+  customFieldInfo = {},
+  onFieldStartedEdit
 }) => {
   const [preview, setPreview] = useState(true)
   const [describe, setDescribe] = useState(false)
@@ -24,7 +25,7 @@ const Attachment = ({
       <Block
         onClick={() => {
           if (preview) {
-            onFieldEdit(field)
+            onFieldStartedEdit(field)
           }
           setPreview(false)
         }}

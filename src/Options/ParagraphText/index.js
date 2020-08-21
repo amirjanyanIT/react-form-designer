@@ -13,7 +13,8 @@ const ParagraphText = ({
   field,
   onChange = () => {},
   onRequestToDelete = () => {},
-  onFieldEdit = () => {}
+  onFieldEdit = () => {},
+  onFieldStartedEdit
 }) => {
   const [preview, setPreview] = useState(true)
   const [describe, setDescribe] = useState(false)
@@ -23,7 +24,7 @@ const ParagraphText = ({
       <Block
         onClick={() => {
           if (preview) {
-            onFieldEdit(field)
+            onFieldStartedEdit(field)
           }
           setPreview(false)
         }}

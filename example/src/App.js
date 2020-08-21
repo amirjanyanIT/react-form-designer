@@ -22,12 +22,9 @@ const App = () => {
     <FormDesigner
       fields={fields}
       onChange={(newFields) => setFields(newFields)}
-      onFieldEdit={(fieldOnEdit) => {
-        console.log({ fieldOnEdit })
-      }}
-      onFieldDelete={(deletedField) => {
-        console.log({ deletedField })
-      }}
+      onFieldStartedEdit={(fieldStartedEdit) => console.log(fieldStartedEdit)}
+      onFieldEdit={(fieldOnEdit) => console.log({ fieldOnEdit })}
+      onFieldDelete={(deletedField) => console.log({ deletedField })}
       expectedOptions={[
         'SINGLECHECKBOX',
         'MULTIPLECHECKBOXES',

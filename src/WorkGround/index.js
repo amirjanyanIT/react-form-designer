@@ -34,7 +34,8 @@ const SortableItem = SortableElement(({ field, fieldIndex }) => {
     ,
     onFieldEdit,
     onFieldDelete,
-    customOptions
+    customOptions,
+    onFieldStartedEdit
   ] = useContext(Context)
 
   const renderOptionContainer = () => {
@@ -43,6 +44,7 @@ const SortableItem = SortableElement(({ field, fieldIndex }) => {
         return (
           <SingleLineText
             field={field}
+            onFieldStartedEdit={onFieldStartedEdit}
             onFieldEdit={onFieldEdit}
             onChange={(updatedField) => {
               onChange(
@@ -69,6 +71,7 @@ const SortableItem = SortableElement(({ field, fieldIndex }) => {
           <ParagraphText
             field={field}
             onFieldEdit={onFieldEdit}
+            onFieldStartedEdit={onFieldStartedEdit}
             onChange={(updatedField) => {
               onChange(
                 fields.map((field, cIndex) =>
@@ -94,6 +97,7 @@ const SortableItem = SortableElement(({ field, fieldIndex }) => {
           <NumberInput
             field={field}
             onFieldEdit={onFieldEdit}
+            onFieldStartedEdit={onFieldStartedEdit}
             onChange={(updatedField) => {
               onChange(
                 fields.map((field, cIndex) =>
@@ -119,6 +123,7 @@ const SortableItem = SortableElement(({ field, fieldIndex }) => {
           <DropDown
             field={field}
             onFieldEdit={onFieldEdit}
+            onFieldStartedEdit={onFieldStartedEdit}
             onChange={(updatedField) => {
               onChange(
                 fields.map((field, cIndex) =>
@@ -144,6 +149,7 @@ const SortableItem = SortableElement(({ field, fieldIndex }) => {
           <MultiSelect
             field={field}
             onFieldEdit={onFieldEdit}
+            onFieldStartedEdit={onFieldStartedEdit}
             onChange={(updatedField) => {
               onChange(
                 fields.map((field, cIndex) =>
@@ -169,6 +175,7 @@ const SortableItem = SortableElement(({ field, fieldIndex }) => {
           <DateInput
             field={field}
             onFieldEdit={onFieldEdit}
+            onFieldStartedEdit={onFieldStartedEdit}
             onChange={(updatedField) => {
               onChange(
                 fields.map((field, cIndex) =>
@@ -194,6 +201,7 @@ const SortableItem = SortableElement(({ field, fieldIndex }) => {
           <Attachment
             field={field}
             onFieldEdit={onFieldEdit}
+            onFieldStartedEdit={onFieldStartedEdit}
             onChange={(updatedField) => {
               onChange(
                 fields.map((field, cIndex) =>
@@ -219,6 +227,7 @@ const SortableItem = SortableElement(({ field, fieldIndex }) => {
           <RadioButton
             field={field}
             onFieldEdit={onFieldEdit}
+            onFieldStartedEdit={onFieldStartedEdit}
             onChange={(updatedField) => {
               onChange(
                 fields.map((field, cIndex) =>
@@ -249,6 +258,7 @@ const SortableItem = SortableElement(({ field, fieldIndex }) => {
               field={field}
               fieldIndex={fieldIndex}
               customFieldInfo={customField}
+              onFieldStartedEdit={onFieldStartedEdit}
               onFieldEdit={onFieldEdit}
               onChange={(updatedField) => {
                 onChange(
@@ -278,6 +288,7 @@ const SortableItem = SortableElement(({ field, fieldIndex }) => {
             fieldIndex={fieldIndex}
             customFieldInfo={customField}
             onFieldEdit={onFieldEdit}
+            onFieldStartedEdit={onFieldStartedEdit}
             onChange={(updatedField) => {
               onChange(
                 fields.map((field, cIndex) =>

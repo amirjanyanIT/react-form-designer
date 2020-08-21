@@ -14,7 +14,7 @@ import { BsTrash, BsPlus } from 'react-icons/bs'
 const SortableItem = SortableElement(
   ({ option, optionIndex, setOptions, options }) => (
     <Option
-      value={option.value}
+      value={option}
       onChange={(newValue) => {
         setOptions(
           options.map((option, cIndex) =>
@@ -53,7 +53,8 @@ const CustomFieldsOptions = ({
   onChange = () => {},
   onRequestToDelete = () => {},
   onFieldEdit = () => {},
-  customFieldInfo = {}
+  customFieldInfo = {},
+  onFieldStartedEdit
 }) => {
   const [preview, setPreview] = useState(true)
   const [describe, setDescribe] = useState(false)
@@ -63,7 +64,7 @@ const CustomFieldsOptions = ({
       <Block
         onClick={() => {
           if (preview) {
-            onFieldEdit(field)
+            onFieldStartedEdit(field)
           }
           setPreview(false)
         }}

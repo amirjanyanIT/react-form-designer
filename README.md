@@ -50,12 +50,9 @@ const App = () => {
           optionButton:{}
         }
       }}
-      onFieldEdit={(fieldOnEdit) => {
-        console.log({ fieldOnEdit })
-      }}
-      onFieldDelete={(deletedField) => {
-        console.log({ deletedField })
-      }}
+      onFieldStartedEdit={(fieldStartedEdit) => console.log(fieldStartedEdit)}
+      onFieldEdit={(fieldOnEdit) => console.log({ fieldOnEdit })}
+      onFieldDelete={(deletedField) => console.log({ deletedField })}
       customOptions={[
         {
           icon: null,
@@ -87,6 +84,7 @@ const App = () => {
 - renderInToolBox
 - onFieldEdit
 - onFieldDelete
+- onFieldStartedEdit
 - customOptions
 ## License
 

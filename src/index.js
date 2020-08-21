@@ -27,6 +27,7 @@ export default ({
   styles = {},
   expectedOptions = null,
   renderInToolBox = null,
+  onFieldStartedEdit = () => {},
   onFieldEdit = () => {},
   onFieldDelete = () => {},
   customOptions = []
@@ -41,7 +42,8 @@ export default ({
         styles,
         onFieldEdit,
         onFieldDelete,
-        customOptions
+        customOptions,
+        onFieldStartedEdit
       ]}
     >
       <MainContainer style={styles.mainContainer}>

@@ -14,7 +14,7 @@ import { BsTrash, BsChevronDown, BsPlus } from 'react-icons/bs'
 const SortableItem = SortableElement(
   ({ option, optionIndex, setOptions, options }) => (
     <Option
-      value={option.value}
+      value={option}
       onChange={(newValue) => {
         setOptions(
           options.map((option, cIndex) =>
@@ -51,7 +51,8 @@ const DropDown = ({
   field,
   onChange = () => {},
   onRequestToDelete = () => {},
-  onFieldEdit = () => {}
+  onFieldEdit = () => {},
+  onFieldStartedEdit
 }) => {
   const [preview, setPreview] = useState(true)
   const [describe, setDescribe] = useState(false)
@@ -61,7 +62,7 @@ const DropDown = ({
       <Block
         onClick={() => {
           if (preview) {
-            onFieldEdit(field)
+            onFieldStartedEdit(field)
           }
           setPreview(false)
         }}
