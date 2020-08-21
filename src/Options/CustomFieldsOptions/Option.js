@@ -19,7 +19,7 @@ const Option = ({ onChange, onRequestToDelete, value, optionIndex }) => {
         }
       />
       <IconButton
-        style={{ position: 'absolute', right: 0 }}
+        style={{ position: 'absolute', right: 0, zIndex: 9500 }}
         onClick={() => onRequestToDelete()}
       >
         <BsTrash />
