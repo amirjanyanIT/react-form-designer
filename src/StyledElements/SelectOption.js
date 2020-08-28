@@ -6,5 +6,9 @@ export default styled.div`
   margin-top: 10px;
   border-bottom: 1px solid grey;
   z-index: 9500;
+  background-color: white;
   position: relative;
+  .trash-button {
+    color: #a24664 !important;
+  }
 `

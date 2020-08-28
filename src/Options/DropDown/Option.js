@@ -21,6 +21,7 @@ const Option = ({ onChange, onRequestToDelete, value, optionIndex }) => {
       <IconButton
         style={{ position: 'absolute', right: 0 }}
         onClick={() => onRequestToDelete()}
+        className='trash-button'
       >
         <BsTrash />
       </IconButton>

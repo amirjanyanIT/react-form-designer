@@ -40,7 +40,10 @@ const DateInput = ({
               <Title>
                 <BsCalendar /> Date
               </Title>
-              <IconButton onClick={() => onRequestToDelete()}>
+              <IconButton
+                onClick={() => onRequestToDelete()}
+                className='trash-button'
+              >
                 <BsTrash />
               </IconButton>
             </div>
@@ -55,7 +58,10 @@ const DateInput = ({
               }}
             />
             {!describe && !field.description && (
-              <LinkButton onClick={() => setDescribe(true)}>
+              <LinkButton
+                onClick={() => setDescribe(true)}
+                className='describe-button'
+              >
                 + Describe
               </LinkButton>
             )}
@@ -64,6 +70,7 @@ const DateInput = ({
                 placeholder={constants.DESCRIPTION_PLACEHOLDER}
                 value={field.description}
                 type='text'
+                className='description'
                 onChange={({ target: { value } }) => {
                   onFieldEdit({ ...field, description: value })
                   onChange({ ...field, description: value })

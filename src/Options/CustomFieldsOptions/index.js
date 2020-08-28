@@ -9,7 +9,7 @@ import Option from './Option'
 import arrayMove from 'array-move'
 import constants from '../../constants.json'
 import { SortableContainer, SortableElement } from 'react-sortable-hoc'
-import { BsTrash, BsPlus } from 'react-icons/bs'
+import { BsTrash } from 'react-icons/bs'
 
 const SortableItem = SortableElement(
   ({ option, optionIndex, setOptions, options }) => (
@@ -81,7 +81,10 @@ const CustomFieldsOptions = ({
               <Title>
                 {customFieldInfo.icon} {customFieldInfo.title}
               </Title>
-              <IconButton onClick={() => onRequestToDelete()}>
+              <IconButton
+                className='trash-button'
+                onClick={() => onRequestToDelete()}
+              >
                 <BsTrash />
               </IconButton>
             </div>
@@ -96,7 +99,10 @@ const CustomFieldsOptions = ({
               }}
             />
             {!describe && !field.description && (
-              <LinkButton onClick={() => setDescribe(true)}>
+              <LinkButton
+                onClick={() => setDescribe(true)}
+                className='describe-button'
+              >
                 + Describe
               </LinkButton>
             )}
@@ -105,6 +111,7 @@ const CustomFieldsOptions = ({
                 placeholder={constants.DESCRIPTION_PLACEHOLDER}
                 value={field.description}
                 type='text'
+                className='description'
                 onChange={({ target: { value } }) => {
                   onFieldEdit({ ...field, description: value })
                   onChange({ ...field, description: value })
@@ -149,8 +156,7 @@ const CustomFieldsOptions = ({
                 })
               }}
             >
-              <BsPlus />
-              Add Option
+              + Add Option
             </LinkButton>
             {customFieldInfo.renderIn &&
               customFieldInfo.renderIn(field, fieldIndex)}

@@ -28,4 +28,10 @@ export default styled.div`
   &.preview {
     cursor: move;
   }
+  .describe-button {
+    color: #06bb89;
+  }
+  .trash-button {
+    color: #a24664 !important;
+  }
 `

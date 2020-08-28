@@ -60,7 +60,10 @@ const SingleLineText = ({
               }}
             />
             {!describe && !field.description && (
-              <LinkButton onClick={() => setDescribe(true)}>
+              <LinkButton
+                onClick={() => setDescribe(true)}
+                className='describe-button'
+              >
                 + Describe
               </LinkButton>
             )}
@@ -69,6 +72,7 @@ const SingleLineText = ({
                 placeholder={constants.DESCRIPTION_PLACEHOLDER}
                 value={field.description}
                 type='text'
+                className='description'
                 onChange={({ target: { value } }) => {
                   onFieldEdit({ ...field, description: value })
                   onChange({ ...field, description: value })

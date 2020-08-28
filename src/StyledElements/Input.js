@@ -7,6 +7,9 @@ export default styled.input`
   height: 23px;
   padding-left: 5px;
   margin-bottom: 6px;
+  &.description {
+    border-color: #06bb89;
+  }
   &:focus {
     border-color: #2684ff;
   }

@@ -9,7 +9,7 @@ import Option from './Option'
 import arrayMove from 'array-move'
 import constants from '../../constants.json'
 import { SortableContainer, SortableElement } from 'react-sortable-hoc'
-import { BsTrash, BsCardChecklist, BsPlus } from 'react-icons/bs'
+import { BsTrash, BsCardChecklist } from 'react-icons/bs'
 
 const SortableItem = SortableElement(
   ({ option, optionIndex, setOptions, options }) => (
@@ -79,7 +79,10 @@ const MultiSelect = ({
               <Title>
                 <BsCardChecklist /> Multi Select
               </Title>
-              <IconButton onClick={() => onRequestToDelete()}>
+              <IconButton
+                onClick={() => onRequestToDelete()}
+                className='trash-button'
+              >
                 <BsTrash />
               </IconButton>
             </div>
@@ -94,7 +97,10 @@ const MultiSelect = ({
               }}
             />
             {!describe && !field.description && (
-              <LinkButton onClick={() => setDescribe(true)}>
+              <LinkButton
+                onClick={() => setDescribe(true)}
+                className='describe-button'
+              >
                 + Describe
               </LinkButton>
             )}
@@ -103,6 +109,7 @@ const MultiSelect = ({
                 placeholder={constants.DESCRIPTION_PLACEHOLDER}
                 value={field.description}
                 type='text'
+                className='description'
                 onChange={({ target: { value } }) => {
                   onFieldEdit({ ...field, description: value })
                   onChange({ ...field, description: value })
@@ -147,8 +154,7 @@ const MultiSelect = ({
                 })
               }}
             >
-              <BsPlus />
-              Add Option
+              + Add Option
             </LinkButton>
           </Fragment>
         )}
