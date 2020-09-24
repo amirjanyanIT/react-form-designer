@@ -16,8 +16,6 @@ const App = () => {
     }
   ]);
   
-  // useEffect(() => console.log(fields), [fields])
-
   return (
     <FormDesigner
       fields={fields}
@@ -25,6 +23,7 @@ const App = () => {
       onFieldStartedEdit={(fieldStartedEdit) => console.log(fieldStartedEdit)}
       onFieldEdit={(fieldOnEdit) => console.log({ fieldOnEdit })}
       onFieldDelete={(deletedField) => console.log({ deletedField })}
+      containerHeight={900}
       expectedOptions={[
         'SINGLECHECKBOX',
         'MULTIPLECHECKBOXES',

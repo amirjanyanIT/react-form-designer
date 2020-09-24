@@ -8,7 +8,7 @@ import Button from '../StyledElements/Button'
 import { BsTrash } from 'react-icons/bs'
 
 import BlankJSONInterface from '../BlankJSONInterface'
-import options from './options'
+import options from '../optionTitles'
 
 const Container = styled.div`
   display: flex;
@@ -24,7 +24,15 @@ const Container = styled.div`
   button {
     margin-bottom: 10px;
   }
-
+  .pOptions {
+    overflow: auto;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.03);
+    border-radius: 5px;
+    button {
+      width: 100%;
+    }
+  }
   .actions {
     display: flex;
     justify-content: flex-end;
@@ -86,28 +94,32 @@ const ToolBox = () => {
           &nbsp;&nbsp;Clear
         </Button>
       </div>
-      {pOptions.map((pOption, index) => (
-        <OptionButton
-          key={index}
-          style={styles.toolBoxElements?.optionButton}
-          onClick={() => {
-            const pushableBlankTemplate = BlankJSONInterface[pOption.value] || {
-              type: pOption.type,
-              description: '',
-              name: ''
-            }
+      <div className='pOptions'>
+        {pOptions.map((pOption, index) => (
+          <OptionButton
+            key={index}
+            style={styles.toolBoxElements?.optionButton}
+            onClick={() => {
+              const pushableBlankTemplate = BlankJSONInterface[
+                pOption.value
+              ] || {
+                type: pOption.type || pOption.value,
+                description: '',
+                name: ''
+              }
 
-            if (pOption.options === true) {
-              pushableBlankTemplate.options = []
-            }
+              if (pOption.options === true) {
+                pushableBlankTemplate.options = []
+              }
 
-            onChange([...fields, pushableBlankTemplate])
-          }}
-        >
-          <div className='icon'>{pOption.icon}</div>
-          <div className='label'>{pOption.label || pOption.title}</div>
-        </OptionButton>
-      ))}
+              onChange([...fields, pushableBlankTemplate])
+            }}
+          >
+            <div className='icon'>{pOption.icon}</div>
+            <div className='label'>{pOption.label || pOption.title}</div>
+          </OptionButton>
+        ))}
+      </div>
       {renderInToolBox && renderInToolBox}
     </Container>
   )

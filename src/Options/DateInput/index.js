@@ -7,7 +7,7 @@ import LinkButton from '../../StyledElements/LinkButton'
 import IconButton from '../../StyledElements/IconButton'
 import constants from '../../constants.json'
 import { BsCalendar, BsTrash } from 'react-icons/bs'
-
+import OptionTitle from '../../components/OptionTitle'
 const DateInput = ({
   field,
   onChange = () => {},
@@ -31,6 +31,7 @@ const DateInput = ({
       >
         {preview ? (
           <Fragment>
+            <OptionTitle type={field.type} />
             <Title>{field.name || constants.DEFAULT_HELPER_TEXT}</Title>
             <Input value='' disabled />
           </Fragment>

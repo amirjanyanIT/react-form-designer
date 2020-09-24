@@ -8,7 +8,7 @@ import LinkButton from '../../StyledElements/LinkButton'
 import TextArea from '../../StyledElements/TextArea'
 import constants from '../../constants.json'
 import { BsJustifyLeft, BsTrash } from 'react-icons/bs'
-
+import OptionTitle from '../../components/OptionTitle'
 const ParagraphText = ({
   field,
   onChange = () => {},
@@ -32,6 +32,7 @@ const ParagraphText = ({
       >
         {preview ? (
           <Fragment>
+            <OptionTitle type={field.type} />
             <Title>{field.name || constants.DEFAULT_HELPER_TEXT}</Title>
             <TextArea value='' disabled />
           </Fragment>

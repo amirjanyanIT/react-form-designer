@@ -7,7 +7,7 @@ import IconButton from '../../StyledElements/IconButton'
 import LinkButton from '../../StyledElements/LinkButton'
 import constants from '../../constants.json'
 import { BsTrash, BsThreeDotsVertical } from 'react-icons/bs'
-
+import OptionTitle from '../../components/OptionTitle'
 const RadioButton = ({
   field,
   onChange = () => {},
@@ -31,6 +31,7 @@ const RadioButton = ({
       >
         {preview ? (
           <Fragment>
+            <OptionTitle type={field.type} />
             <Title>{field.name || constants.DEFAULT_HELPER_TEXT}</Title>
             <Input value='' disabled />
           </Fragment>

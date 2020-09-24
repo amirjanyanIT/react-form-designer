@@ -8,7 +8,7 @@ import IconButton from '../../StyledElements/IconButton'
 import LinkButton from '../../StyledElements/LinkButton'
 import constants from '../../constants.json'
 import { BsTrash, BsLink45Deg } from 'react-icons/bs'
-
+import OptionTitle from '../../components/OptionTitle'
 const Attachment = ({
   field,
   onChange = () => {},
@@ -32,6 +32,7 @@ const Attachment = ({
       >
         {preview ? (
           <Fragment>
+            <OptionTitle type={field.type} />
             <Title>{field.name || constants.DEFAULT_HELPER_TEXT}</Title>
             <DragDropArea />
           </Fragment>

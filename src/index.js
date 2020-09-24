@@ -30,7 +30,8 @@ export default ({
   onFieldStartedEdit = () => {},
   onFieldEdit = () => {},
   onFieldDelete = () => {},
-  customOptions = []
+  customOptions = [],
+  containerHeight = 500
 }) => {
   return (
     <FieldsContext.Provider
@@ -46,7 +47,12 @@ export default ({
         onFieldStartedEdit
       ]}
     >
-      <MainContainer style={styles.mainContainer}>
+      <MainContainer
+        style={{
+          ...styles.mainContainer,
+          height: `${containerHeight}px`
+        }}
+      >
         <WorkGround />
         <Tools />
       </MainContainer>

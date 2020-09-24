@@ -5,7 +5,6 @@ export default styled.div`
   flex-direction: column;
   justify-content: center;
   width: 400px;
-  min-height: 120px;
   margin: 10px 0;
   padding: 15px 10px;
   box-shadow: 1px 1px 13px 0px #cac2c2;

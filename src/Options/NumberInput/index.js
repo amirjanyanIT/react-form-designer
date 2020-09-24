@@ -8,6 +8,8 @@ import LinkButton from '../../StyledElements/LinkButton'
 import constants from '../../constants.json'
 import { BsTrash, BsCircle } from 'react-icons/bs'
 
+import OptionTitle from '../../components/OptionTitle'
+
 const NumberInput = ({
   field,
   onChange = () => {},
@@ -17,7 +19,6 @@ const NumberInput = ({
 }) => {
   const [preview, setPreview] = useState(true)
   const [describe, setDescribe] = useState(false)
-
   return (
     <OutsideClickHandler onOutsideClick={() => setPreview(true)}>
       <Block
@@ -31,6 +32,7 @@ const NumberInput = ({
       >
         {preview ? (
           <Fragment>
+            <OptionTitle type={field.type} />
             <Title>{field.name || constants.DEFAULT_HELPER_TEXT}</Title>
             <Input value='' disabled />
           </Fragment>

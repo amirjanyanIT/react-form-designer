@@ -23,6 +23,7 @@ const Container = styled.div`
   flex-direction: column;
   background-color: inherit;
   padding-top: 15px;
+  overflow: auto;
 `
 
 const SortableItem = SortableElement(({ field, fieldIndex }) => {

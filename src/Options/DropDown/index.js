@@ -10,7 +10,7 @@ import arrayMove from 'array-move'
 import constants from '../../constants.json'
 import { SortableContainer, SortableElement } from 'react-sortable-hoc'
 import { BsTrash, BsChevronDown } from 'react-icons/bs'
-
+import OptionTitle from '../../components/OptionTitle'
 const SortableItem = SortableElement(
   ({ option, optionIndex, setOptions, options }) => (
     <Option
@@ -70,6 +70,7 @@ const DropDown = ({
       >
         {preview ? (
           <Fragment>
+            <OptionTitle type={field.type} />
             <Title>{field.name || constants.NAME_PLACEHOLDER}</Title>
             <Input value='' disabled />
           </Fragment>

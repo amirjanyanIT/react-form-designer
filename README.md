@@ -22,57 +22,117 @@ const App = () => {
   
 
   return (
-    <FormDesigner 
-      fields={fields} 
-      onChange={(updatedFields) => setFields(updatedFields)}
-      expectedOptions={
-        [
-          'SINGLE_LINE_TEXT',
-          'PARAGRAPH_TEXT',
-          'NUMBER',
-          'DROPDOWN',
-          'MULTI_SELECT',
-          'DATE',
-          'ATTACHMENT',
-          'RADIO_BUTTON',
-          'CONTACT_FIELD'
-        ]
-      }
-      renderInToolBox={
-        <button>Custom Button</button>
-      }
-      styles={{
-        mainContainer: {}
-        workGround: {}
-        toolBox: {}
-        toolBoxElements: {
-          clearButton:{}
-          optionButton:{}
-        }
-      }}
+    <FormDesigner
+      fields={fields}
+      onChange={(newFields) => setFields(newFields)}
       onFieldStartedEdit={(fieldStartedEdit) => console.log(fieldStartedEdit)}
       onFieldEdit={(fieldOnEdit) => console.log({ fieldOnEdit })}
       onFieldDelete={(deletedField) => console.log({ deletedField })}
+      containerHeight={900}
+      expectedOptions={[
+        'SINGLECHECKBOX',
+        'MULTIPLECHECKBOXES',
+        'DATEPICKER',
+        'DROPDOWNSELECT',
+        'SINGLELINETEXT',
+        'MULTIPLECHECKBOXES',
+        'MULTILINETEXT',
+        'FILE',
+        'RADIOSELECT',
+        'CONTACT',
+        'NUMBER'
+      ]}
       customOptions={[
         {
-          icon: null,
-          type: "MY_CUSTOM_FIELD",
-          title: 'Custom Field',
-          renderIn: (_field,fieldIndex) => {
-            return <div>this is custom JSX {fieldIndex}</div>
+          type: 'SINGLECHECKBOX',
+          title: 'Single Check Box',
+          options: true,
+          renderIn: (field,fieldIndex) => {
+            return <div>this is custom JSX{fieldIndex}</div>
           }
         },
         {
-          icon: null,
-          type: "MY_CUSTOM_FIELD_2",
-          title: 'Custom Field 2',
+          type: 'MULTIPLECHECKBOXES',
+          title: 'Multiple Checkboxes',
           options: true,
-          renderIn: (_field,fieldIndex) => {
-            return <div>this is custom JSX {fieldIndex}</div>
+          renderIn: (field,fieldIndex) => {
+            return <div>this is custom JSX{fieldIndex}</div>
+          }
+        },
+        {
+          type: 'DATEPICKER',
+          title: 'Date Picker',
+          options: true,
+          renderIn: (field,fieldIndex) => {
+            return <div>this is custom JSX{fieldIndex}</div>
+          }
+        },
+        {
+          type: 'DROPDOWNSELECT',
+          title: 'Dropdown Select',
+          options: true,
+          renderIn: (field,fieldIndex) => {
+            return <div>this is custom JSX{fieldIndex}</div>
+          }
+        },
+        {
+          type: 'SINGLELINETEXT',
+          title: 'Single Line Text',
+          options: true,
+          renderIn: (field,fieldIndex) => {
+            return <div>this is custom JSX{fieldIndex}</div>
+          }
+        },
+        {
+          type: 'MULTIPLECHECKBOXES',
+          title: 'Multiple checkboxes',
+          options: true,
+          renderIn: (field,fieldIndex) => {
+            return <div>this is custom JSX{fieldIndex}</div>
+          }
+        },
+        {
+          type: 'MULTILINETEXT',
+          title: 'Multiline text',
+          options: true,
+          renderIn: (field,fieldIndex) => {
+            return <div>this is custom JSX{fieldIndex}</div>
+          }
+        },
+        {
+          type: 'FILE',
+          title: 'File',
+          options: true,
+          renderIn: (field,fieldIndex) => {
+            return <div>this is custom JSX{fieldIndex}</div>
+          }
+        },
+        {
+          type: 'RADIOSELECT',
+          title: 'Radio Select',
+          options: true,
+          renderIn: (field,fieldIndex) => {
+            return <div>this is custom JSX{fieldIndex}</div>
+          }
+        },
+        {
+          type: 'CONTACT',
+          title: 'Contact',
+          options: true,
+          renderIn: (field,fieldIndex) => {
+            return <div>this is custom JSX{fieldIndex}</div>
+          }
+        },
+        {
+          type: 'NUMBER',
+          title: 'Number',
+          options: true,
+          renderIn: (field,fieldIndex) => {
+            return <div>this is custom JSX{fieldIndex}</div>
           }
         }
       ]}
-    >
+    />
   )
 }
 ```
@@ -86,6 +146,7 @@ const App = () => {
 - onFieldDelete
 - onFieldStartedEdit
 - customOptions
+- containerHeight
 ## License
 
 MIT © [AmirjanyanIT](https://github.com/AmirjanyanIT)
