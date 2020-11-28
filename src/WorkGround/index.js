@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, forwardRef } from 'react'
 import styled from 'styled-components'
 
 import Context from '../Context'
@@ -334,11 +334,10 @@ const SortableList = SortableContainer(() => {
   )
 })
 
-export default () => {
+export default forwardRef((props, ref) => {
   const [fields, onChange, , , styles] = useContext(Context)
-
   return (
-    <Container style={styles.workGround}>
+    <Container style={styles.workGround} ref={ref}>
       <SortableList
         distance={1}
         helperClass='sortableHelper-UIContainer'
@@ -350,4 +349,4 @@ export default () => {
       />
     </Container>
   )
-}
+})

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 
 import FieldsContext from './Context'
@@ -33,6 +33,19 @@ export default ({
   customOptions = [],
   containerHeight = 500
 }) => {
+  const [workgroundContainerRef, setWorkgroundContainerRef] = useState(null)
+  const [toolsContainerRef, setToolsContainerRef] = useState(null)
+  const [fieldsCountSnapshot, setFieldsCountSnapshot] = useState(
+    fields ? fields.length : null
+  )
+
+  useEffect(() => {
+    if (fields && fields.length !== fieldsCountSnapshot) {
+      workgroundContainerRef.scrollTop = workgroundContainerRef.scrollHeight
+      setFieldsCountSnapshot(fields.length)
+    }
+  }, [fields])
+
   return (
     <FieldsContext.Provider
       value={[
@@ -44,7 +57,9 @@ export default ({
         onFieldEdit,
         onFieldDelete,
         customOptions,
-        onFieldStartedEdit
+        onFieldStartedEdit,
+        workgroundContainerRef,
+        toolsContainerRef
       ]}
     >
       <MainContainer
@@ -53,8 +68,8 @@ export default ({
           height: `${containerHeight}px`
         }}
       >
-        <WorkGround />
-        <Tools />
+        <WorkGround ref={setWorkgroundContainerRef} />
+        <Tools ref={setToolsContainerRef} />
       </MainContainer>
     </FieldsContext.Provider>
   )

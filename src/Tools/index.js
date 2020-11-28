@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { forwardRef, useContext } from 'react'
 import styled from 'styled-components'
 
 import Context from '../Context'
@@ -55,7 +55,7 @@ const Container = styled.div`
     }
   }
 `
-const ToolBox = () => {
+const ToolBox = forwardRef((props, ref) => {
   const [
     fields,
     onChange,
@@ -64,7 +64,8 @@ const ToolBox = () => {
     styles,
     ,
     ,
-    customFields
+    customFields,
+    ,
   ] = useContext(Context)
   const pOptions = expectedOptions
     ? [...options, ...customFields].filter((option) =>
@@ -73,7 +74,7 @@ const ToolBox = () => {
     : [...options, ...customFields]
 
   return (
-    <Container style={styles.toolBox}>
+    <Container style={styles.toolBox} ref={ref}>
       <label>Add Field</label>
       <p className='description'>Create a field using these Custom Fields</p>
       <div className='actions'>
@@ -123,6 +124,5 @@ const ToolBox = () => {
       {renderInToolBox && renderInToolBox}
     </Container>
   )
-}
-
+})
 export default ToolBox
