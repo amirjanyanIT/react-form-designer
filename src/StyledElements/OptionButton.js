@@ -14,7 +14,7 @@ export default styled.button`
   box-shadow: 1px 1px 5px #d8d8d8;
   color: #4a4a4a;
   &:hover {
-    box-shadow: 1px 1px 10px rgb(166 198 234);
+    box-shadow: 1px 1px 10px rgba(22, 102, 120, 0.31);
     color: #166678;
   }
   .icon {
