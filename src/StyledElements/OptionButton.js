@@ -13,9 +13,12 @@ export default styled.button`
   cursor: pointer;
   box-shadow: 1px 1px 5px #d8d8d8;
   color: #4a4a4a;
+  transition: all 0.3s ease-in-out;
   &:hover {
     box-shadow: 1px 1px 10px rgba(22, 102, 120, 0.31);
     color: #166678;
+    background-color: #f7b924;
+    color: #212529;
   }
   .icon {
     margin-right: 15px;
